@@ -1,0 +1,145 @@
+* {
+  letter-spacing: 1px;
+}
+
+.wrapper {
+  margin: 100px auto;
+  width: 560px;
+}
+
+.card {
+  border-top: none !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 35px 25px 30px 25px;
+}
+
+.card-pd {
+  margin: 15px 12px;
+}
+
+.modal-content {
+  margin: -10px -30px;
+  position: relative;
+  top: 80px;
+  width: 560px !important;
+}
+
+.modal-footerBtn {
+  margin-top: 10px !important;
+}
+
+.tabName {
+  text-align: center;
+  width: 140px;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.label-bottom {
+  margin-top: 17px;
+}
+
+.error {
+  border: 1px solid #f00f !important;
+}
+
+.error::placeholder {
+  color: #f00f !important;
+}
+
+.positionError {
+  position: relative !important;
+  top: 330px !important;
+}
+
+.check {
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.label-check {
+  font-size: 18px;
+  position: relative;
+  text-transform: uppercase;
+  top: 1px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.oneBtn {
+  width: 100%;
+}
+
+.twoBtn {
+  width: 48.78%;
+}
+
+.threeBtn {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.leftBtn {
+  margin-right: 7px;
+}
+
+.littleBtn {
+  float: right;
+  margin-top: -5px;
+  width: 30%;
+}
+
+.check-top {
+  margin-top: 15px;
+}
+
+.checkSm {
+  text-transform: none;
+}
+
+.save-element {
+  font-size: 18px;
+}
+
+.imageDow {
+  font-size: 18px;
+  font-style: italic;
+}
+
+.image-item,
+.image-item-save {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.image-items {
+  margin-bottom: 15px;
+}
+
+.image-item:nth-child(2),
+.image-item:nth-child(3),
+.image-item:nth-child(5) {
+  margin-right: 15px;
+}
+
+.image-item-save:nth-child(1),
+.image-item-save:nth-child(2),
+.image-item-save:nth-child(4) {
+  margin-right: 15px;
+}
+
+.serviceItems {
+  margin-bottom: 4px;
+  padding-left: 20px;
+}
+
+li.save-element {
+  list-style-type: circle;
+  margin-top: 2px;
+}
