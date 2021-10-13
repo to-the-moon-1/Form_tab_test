@@ -2,9 +2,7 @@ import React from 'react';
 import { FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const Check = props => {
-  const { checked, setChecked } = props;
-
+const Check = ({ checked, setChecked }) => {
   let message;
 
   if (checked) {
@@ -15,15 +13,15 @@ const Check = props => {
 
   return (
     <>
-      <FormGroup check>
-        <Label check className="label-bottom">
+      <FormGroup check className="service-mg">
+        <Label check className="label-mg">
           <Input
-            className="check"
+            className="checkbox"
             defaultChecked={checked}
             onChange={setChecked}
             type="checkbox"
           />{' '}
-          <span className="label-check">{message}</span>
+          <span className="label-checkbox">{message}</span>
         </Label>
       </FormGroup>
     </>

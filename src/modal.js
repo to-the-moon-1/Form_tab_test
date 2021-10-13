@@ -2,73 +2,73 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const ModalBtn = props => {
-  const {
-    className,
-    header,
-    description,
-    phone,
-    email,
-    checked,
-    images,
-    service1,
-    service2,
-    service3,
-    service4,
-    service5,
-  } = props;
-
+const ModalBtn = ({
+  className,
+  header,
+  description,
+  paidService,
+  phone,
+  email,
+  checked,
+  images,
+}) => {
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const toggle = () => {
+    setModal(!modal);
+  };
 
   return (
     <>
-      <Button className="twoBtn label-bottom" color="success" onClick={toggle}>
+      <Button
+        className="half-of-width-btn service-btn label-mg"
+        color="success"
+        onClick={toggle}
+      >
         Save
       </Button>
       <Modal className={className} isOpen={modal} toggle={toggle}>
         <div className="card-pd modalPosition">
           <ModalHeader>Your ad</ModalHeader>
           <ModalBody>
-            <div className="save-element">Header: {header}</div>
-            {description ? (
-              <div className="save-element">Description: {description}</div>
-            ) : null}
-            <div className="save-element">Phone number: {phone}</div>
-            {email ? <div className="save-element">Email: {email}</div> : null}
-            <div className="save-element">
+            <div className="save-text-item">Header: {header}</div>
+            {description && (
+              <div className="save-text-item">Description: {description}</div>
+            )}
+            <div className="save-text-item">Phone number: {phone}</div>
+            {email && <div className="save-text-item">Email: {email}</div>}
+            <div className="save-text-item">
               Checkbox: {checked === false ? 'OFF' : 'ON'}
             </div>
             <div className="image-items">
               {images.map((image, index) => (
-                <div key={index} className="image-item-save">
-                  <img alt="" height="210" src={image.data_url} width="157" />
+                <div key={index} className="save-image-item">
+                  <img
+                    alt="Your img"
+                    height="210"
+                    src={image.data_url}
+                    width="157"
+                  />
                 </div>
               ))}
             </div>
-            <ul className="serviceItems">
-              {service1 === true ? (
-                <li className="save-element">Paid service one</li>
-              ) : null}
-              {service2 === true ? (
-                <li className="save-element">Paid service two</li>
-              ) : null}
-              {service3 === true ? (
-                <li className="save-element">Paid service three</li>
-              ) : null}
-              {service4 === true ? (
-                <li className="save-element">Paid service four</li>
-              ) : null}
-              {service5 === true ? (
-                <li className="save-element">Paid service five</li>
-              ) : null}
+            <ul className="service-items">
+              {paidService.map((s, i) => {
+                return (
+                  s.checked && (
+                    <li key={i} className="save-text-item save-service-item">
+                      Paid service {s.number}
+                    </li>
+                  )
+                );
+              })}
             </ul>
           </ModalBody>
           <ModalFooter>
             <Button
-              className="twoBtn modal-footerBtn"
+              className="half-of-width-btn"
               color="secondary"
+              id="modal-footer-btn"
               onClick={toggle}
             >
               Cancel
@@ -86,13 +86,18 @@ ModalBtn.propTypes = {
   email: PropTypes.string,
   description: PropTypes.string,
   checked: PropTypes.bool,
-  images: PropTypes.array,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      data_url: PropTypes.string,
+    }),
+  ),
+  paidService: PropTypes.arrayOf(
+    PropTypes.shape({
+      number: PropTypes.string,
+      checked: PropTypes.bool,
+    }),
+  ),
   className: PropTypes.func,
-  service1: PropTypes.bool,
-  service2: PropTypes.bool,
-  service3: PropTypes.bool,
-  service4: PropTypes.bool,
-  service5: PropTypes.bool,
 };
 
 ModalBtn.defaultProps = {
@@ -102,12 +107,8 @@ ModalBtn.defaultProps = {
   description: '',
   checked: false,
   images: [],
+  paidService: [],
   className: () => {},
-  service1: false,
-  service2: false,
-  service3: false,
-  service4: false,
-  service5: false,
 };
 
 export default ModalBtn;

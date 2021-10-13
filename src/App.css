@@ -7,11 +7,16 @@
   width: 560px;
 }
 
-.card {
-  border-top: none !important;
+#tab-card {
+  border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 35px 25px 30px 25px;
+}
+
+.tab-name {
+  text-align: center;
+  width: 140px;
 }
 
 .card-pd {
@@ -20,18 +25,18 @@
 
 .modal-content {
   margin: -10px -30px;
+  min-width: 560px;
   position: relative;
   top: 80px;
-  width: 560px !important;
 }
 
-.modal-footerBtn {
-  margin-top: 10px !important;
+#modal-footer-btn {
+  margin-top: 10px;
 }
 
-.tabName {
-  text-align: center;
-  width: 140px;
+.position-of-error {
+  position: relative;
+  top: 330px;
 }
 
 .label {
@@ -39,29 +44,16 @@
   margin-bottom: 8px;
 }
 
-.label-bottom {
+.label-mg {
   margin-top: 17px;
 }
 
-.error {
-  border: 1px solid #f00f !important;
-}
-
-.error::placeholder {
-  color: #f00f !important;
-}
-
-.positionError {
-  position: relative !important;
-  top: 330px !important;
-}
-
-.check {
+.checkbox {
   margin-right: 10px;
   padding: 10px;
 }
 
-.label-check {
+.label-checkbox {
   font-size: 18px;
   position: relative;
   text-transform: uppercase;
@@ -72,48 +64,52 @@
   margin-top: 20px;
 }
 
-.oneBtn {
+.service-btn {
+  margin-top: 5px;
+}
+
+.full-of-width-btn {
   width: 100%;
 }
 
-.twoBtn {
+.half-of-width-btn {
   width: 48.78%;
 }
 
-.threeBtn {
+.one-third-of-width-btn {
   margin-top: 10px;
   width: 100%;
 }
 
-.leftBtn {
+.left-btn {
   margin-right: 7px;
 }
 
-.littleBtn {
+.error-btn {
   float: right;
   margin-top: -5px;
   width: 30%;
 }
 
-.check-top {
-  margin-top: 15px;
-}
-
-.checkSm {
+.no-text-transform {
   text-transform: none;
 }
 
-.save-element {
-  font-size: 18px;
+.service-mg {
+  margin-bottom: 15px;
 }
 
-.imageDow {
+.image-download-btn {
   font-size: 18px;
   font-style: italic;
 }
 
+.save-text-item {
+  font-size: 18px;
+}
+
 .image-item,
-.image-item-save {
+.save-image-item {
   display: inline-block;
   margin-top: 15px;
 }
@@ -123,23 +119,21 @@
 }
 
 .image-item:nth-child(2),
-.image-item:nth-child(3),
-.image-item:nth-child(5) {
+.image-item:nth-child(odd) {
   margin-right: 15px;
 }
 
-.image-item-save:nth-child(1),
-.image-item-save:nth-child(2),
-.image-item-save:nth-child(4) {
+.save-image-item:nth-child(1),
+.save-image-item:nth-child(even) {
   margin-right: 15px;
 }
 
-.serviceItems {
+.service-items {
   margin-bottom: 4px;
   padding-left: 20px;
 }
 
-li.save-element {
+.save-service-item {
   list-style-type: circle;
   margin-top: 2px;
 }

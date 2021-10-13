@@ -2,9 +2,7 @@ import { Button, Modal, ModalBody } from 'reactstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Error = props => {
-  const { header, phone, error, toggleError } = props;
-
+const Error = ({ header, phone, error, toggleError }) => {
   let warning;
 
   if (header.length === 0) {
@@ -16,22 +14,16 @@ const Error = props => {
   }
 
   return (
-    <>
-      <Modal className="positionError" isOpen={error} toggle={toggleError}>
-        <div className="card-pd">
-          <ModalBody>
-            <span>{warning}</span>
-            <Button
-              className="littleBtn"
-              color="secondary"
-              onClick={toggleError}
-            >
-              Okay
-            </Button>
-          </ModalBody>
-        </div>
-      </Modal>
-    </>
+    <Modal className="position-of-error" isOpen={error} toggle={toggleError}>
+      <div className="card-pd">
+        <ModalBody>
+          <span>{warning}</span>
+          <Button className="error-btn" color="secondary" onClick={toggleError}>
+            Okay
+          </Button>
+        </ModalBody>
+      </div>
+    </Modal>
   );
 };
 
