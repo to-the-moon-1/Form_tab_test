@@ -3,13 +3,7 @@ import { FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const Check = ({ checked, setChecked }) => {
-  let message;
-
-  if (checked) {
-    message = 'ON';
-  } else {
-    message = 'OFF';
-  }
+  const message = checked ? 'ON' : 'OFF';
 
   return (
     <>

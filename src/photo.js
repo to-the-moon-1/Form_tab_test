@@ -2,6 +2,7 @@ import React from 'react';
 import ImageUploading from 'react-images-uploading';
 import { Button, TabPane, Form } from 'reactstrap';
 import PropTypes from 'prop-types';
+
 import Error from './error';
 
 const Photo = ({

@@ -3,43 +3,34 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+import changeTab from './change-tab';
+
 const Navigation = ({
   activeTab,
-  changeActiveTab,
   reqHeader,
   reqPhone,
   toggle,
+  toggleError,
 }) => {
   const tabs = [
-    { id: 0, name: 'Information' },
-    { id: 1, name: 'Contact' },
-    { id: 2, name: 'Photo' },
-    { id: 3, name: 'Publication' },
+    { index: 0, name: 'Information' },
+    { index: 1, name: 'Contact' },
+    { index: 2, name: 'Photo' },
+    { index: 3, name: 'Publication' },
   ];
-
-  const newActiveTab = i => {
-    if (i === 0) {
-      toggle(i + 1);
-    }
-    if (i === 1) {
-      changeActiveTab(reqHeader, i + 1);
-    }
-    if (i === 2 || i === 3) {
-      changeActiveTab(reqPhone, i + 1);
-    }
-  };
 
   return (
     <Nav tabs>
-      {tabs.map((t, i) => {
-        const handleActibeTab = () => newActiveTab(i);
+      {tabs.map(({ index, name }) => {
+        const handleActibeTab = () =>
+          changeTab(activeTab, reqHeader, reqPhone, toggle, toggleError, index);
         return (
-          <NavItem key={i} className="tab-name">
+          <NavItem key={`${name}_${index}`} className="tab-name">
             <NavLink
-              className={classnames({ active: activeTab === i + 1 })}
+              className={classnames({ active: activeTab === index + 1 })}
               onClick={handleActibeTab}
             >
-              {t.name}
+              {name}
             </NavLink>
           </NavItem>
         );
@@ -50,18 +41,24 @@ const Navigation = ({
 
 Navigation.propTypes = {
   activeTab: PropTypes.number,
-  reqHeader: PropTypes.instanceOf(null),
-  reqPhone: PropTypes.instanceOf(null),
-  changeActiveTab: PropTypes.func,
+  reqHeader: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
+  ]),
+  reqPhone: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
+  ]),
   toggle: PropTypes.func,
+  toggleError: PropTypes.func,
 };
 
 Navigation.defaultProps = {
   activeTab: 1,
   reqHeader: null,
   reqPhone: null,
-  changeActiveTab: () => {},
   toggle: () => {},
+  toggleError: () => {},
 };
 
 export default Navigation;

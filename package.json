@@ -14,7 +14,6 @@
     "web-vitals": "1.0.1"
   },
   "devDependencies": {
-    "caniuse-lite": "^1.0.30001265",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
@@ -30,7 +29,6 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint": "^7.11.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",

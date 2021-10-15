@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { TabContent } from 'reactstrap';
+
 import Navigation from './nav-tabs';
 import Information from './information';
 import Contact from './contact';
 import Photo from './photo';
 import Publication from './publication';
+
 import './App.css';
 
 const App = () => {
@@ -40,17 +42,6 @@ const App = () => {
   const changeImg = imageList => setImages(imageList);
   const toggleError = () => setError(!error);
 
-  const changeActiveTab = (param, tab) => {
-    const isRequired = param.current.props.value;
-    if (isRequired === '') {
-      toggleError();
-    }
-    if (isRequired.length > 0) {
-      return toggle(tab);
-    }
-    return null;
-  };
-
   const requiredSuccess = param => {
     if (param === '') {
       toggleError();
@@ -62,14 +53,13 @@ const App = () => {
   };
 
   const errorImg = errors => {
-    if (errors.maxNumber === true) {
-      toggleError();
-    }
+    if (!errors.maxNumber) return;
+    toggleError();
   };
 
   const handlePaidService = e => {
     const { name, checked } = e.target;
-    const index = paidService.findIndex(item => item.number === name);
+    const index = paidService.findIndex(({ number }) => number === name);
     const item = paidService[index];
     const newPaidService = [...paidService];
     newPaidService[index] = { ...item, checked };
@@ -81,12 +71,13 @@ const App = () => {
     <div className="wrapper">
       <Navigation
         activeTab={activeTab}
-        changeActiveTab={changeActiveTab}
+        // changeActiveTab={changeActiveTab}
         reqHeader={reqHeader}
         reqPhone={reqPhone}
         toggle={toggle}
+        toggleError={toggleError}
       />
-      <TabContent activeTab={activeTab} className="card" id="tab-card">
+      <TabContent activeTab={activeTab} className="tab-card">
         <Information
           checked={checked}
           handleCheck={handleCheck}

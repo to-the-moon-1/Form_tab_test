@@ -28,7 +28,7 @@ const ModalBtn = ({
         Save
       </Button>
       <Modal className={className} isOpen={modal} toggle={toggle}>
-        <div className="card-pd modalPosition">
+        <div className="card-pd">
           <ModalHeader>Your ad</ModalHeader>
           <ModalBody>
             <div className="save-text-item">Header: {header}</div>
@@ -53,22 +53,23 @@ const ModalBtn = ({
               ))}
             </div>
             <ul className="service-items">
-              {paidService.map((s, i) => {
-                return (
-                  s.checked && (
-                    <li key={i} className="save-text-item save-service-item">
-                      Paid service {s.number}
+              {paidService.map(
+                ({ number, checked }, index) =>
+                  checked && (
+                    <li
+                      key={`${number}_${index}`}
+                      className="save-text-item save-service-item"
+                    >
+                      Paid service {number}
                     </li>
-                  )
-                );
-              })}
+                  ),
+              )}
             </ul>
           </ModalBody>
           <ModalFooter>
             <Button
-              className="half-of-width-btn"
+              className="half-of-width-btn btn"
               color="secondary"
-              id="modal-footer-btn"
               onClick={toggle}
             >
               Cancel
@@ -97,7 +98,7 @@ ModalBtn.propTypes = {
       checked: PropTypes.bool,
     }),
   ),
-  className: PropTypes.func,
+  className: PropTypes.string,
 };
 
 ModalBtn.defaultProps = {
@@ -108,7 +109,7 @@ ModalBtn.defaultProps = {
   checked: false,
   images: [],
   paidService: [],
-  className: () => {},
+  className: '',
 };
 
 export default ModalBtn;

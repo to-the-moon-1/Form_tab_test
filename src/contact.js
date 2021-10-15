@@ -24,6 +24,7 @@ const Contact = ({
           <Input
             ref={reqPhone}
             id="example-phone"
+            index={2}
             name="phone"
             onChange={handleChangePhone}
             placeholder="Your phone number"
@@ -65,7 +66,10 @@ const Contact = ({
 
 Contact.propTypes = {
   phone: PropTypes.string,
-  reqPhone: PropTypes.instanceOf(null),
+  reqPhone: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
+  ]),
   setEmail: PropTypes.func,
   setPhone: PropTypes.func,
   prevTab: PropTypes.func,

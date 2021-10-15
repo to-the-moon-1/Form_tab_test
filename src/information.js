@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 import PropTypes from 'prop-types';
+
 import Check from './check';
 
 const Information = ({
@@ -26,6 +27,7 @@ const Information = ({
           <Input
             ref={reqHeader}
             id="example-header"
+            index={1}
             name="header"
             onChange={handleChangeHeader}
             placeholder="Your header"
@@ -62,7 +64,10 @@ const Information = ({
 Information.propTypes = {
   checked: PropTypes.bool,
   header: PropTypes.string,
-  reqHeader: PropTypes.instanceOf(null),
+  reqHeader: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
+  ]),
   handleCheck: PropTypes.func,
   setDescription: PropTypes.func,
   setHeader: PropTypes.func,
