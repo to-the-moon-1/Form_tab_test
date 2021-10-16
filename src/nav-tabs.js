@@ -3,6 +3,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+import tabs from './tabs-for-nav';
 import changeTab from './change-tab';
 
 const Navigation = ({
@@ -11,33 +12,24 @@ const Navigation = ({
   reqPhone,
   toggle,
   toggleError,
-}) => {
-  const tabs = [
-    { index: 0, name: 'Information' },
-    { index: 1, name: 'Contact' },
-    { index: 2, name: 'Photo' },
-    { index: 3, name: 'Publication' },
-  ];
-
-  return (
-    <Nav tabs>
-      {tabs.map(({ index, name }) => {
-        const handleActibeTab = () =>
-          changeTab(activeTab, reqHeader, reqPhone, toggle, toggleError, index);
-        return (
-          <NavItem key={`${name}_${index}`} className="tab-name">
-            <NavLink
-              className={classnames({ active: activeTab === index + 1 })}
-              onClick={handleActibeTab}
-            >
-              {name}
-            </NavLink>
-          </NavItem>
-        );
-      })}
-    </Nav>
-  );
-};
+}) => (
+  <Nav tabs>
+    {tabs.map(({ index, name }) => {
+      const handleActibeTab = () =>
+        changeTab(activeTab, reqHeader, reqPhone, toggle, toggleError, index);
+      return (
+        <NavItem key={`${name}_${index}`} className="tab-name">
+          <NavLink
+            className={classnames({ active: activeTab === index + 1 })}
+            onClick={handleActibeTab}
+          >
+            {name}
+          </NavLink>
+        </NavItem>
+      );
+    })}
+  </Nav>
+);
 
 Navigation.propTypes = {
   activeTab: PropTypes.number,

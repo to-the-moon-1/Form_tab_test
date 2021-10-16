@@ -10,9 +10,7 @@ const changeTab = (
 ) => {
   const firstPage = 1;
 
-  const changeActiveTab = (param, tab) => {
-    const isRequired = param.current.props.value;
-    const isRequiredIndex = param.current.props.index;
+  const changeActiveTab = (isRequired, isRequiredIndex, tab) => {
     if (isRequired === '' && tab === activeTab - 1) {
       toggle(activeTab - 1);
     }

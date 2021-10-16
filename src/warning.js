@@ -1,4 +1,4 @@
-const Warning = ({ header, phone }) => {
+const warning = (header, phone) => {
   if (header.length === 0) {
     return 'Fill the required field: header';
   }
@@ -8,4 +8,4 @@ const Warning = ({ header, phone }) => {
   return "Can't download more pictures than 5";
 };
 
-export default Warning;
+export default warning;

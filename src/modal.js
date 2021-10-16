@@ -40,18 +40,20 @@ const ModalBtn = ({
             <div className="save-text-item">
               Checkbox: {checked === false ? 'OFF' : 'ON'}
             </div>
-            <div className="image-items">
-              {images.map((image, index) => (
-                <div key={index} className="save-image-item">
-                  <img
-                    alt="Your img"
-                    height="210"
-                    src={image.data_url}
-                    width="157"
-                  />
-                </div>
-              ))}
-            </div>
+            {images.length > 0 && (
+              <div className="image-items">
+                {images.map((image, index) => (
+                  <div key={index} className="save-image-item">
+                    <img
+                      alt="Your img"
+                      height="210"
+                      src={image.data_url}
+                      width="157"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
             <ul className="service-items">
               {paidService.map(
                 ({ number, checked }, index) =>

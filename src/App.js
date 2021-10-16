@@ -57,8 +57,7 @@ const App = () => {
     toggleError();
   };
 
-  const handlePaidService = e => {
-    const { name, checked } = e.target;
+  const handlePaidService = ({ target: { name, checked } }) => {
     const index = paidService.findIndex(({ number }) => number === name);
     const item = paidService[index];
     const newPaidService = [...paidService];
@@ -71,7 +70,6 @@ const App = () => {
     <div className="wrapper">
       <Navigation
         activeTab={activeTab}
-        // changeActiveTab={changeActiveTab}
         reqHeader={reqHeader}
         reqPhone={reqPhone}
         toggle={toggle}
