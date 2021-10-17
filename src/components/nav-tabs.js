@@ -3,20 +3,14 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import tabs from './tabs-for-nav';
-import changeTab from './change-tab';
+import tabs from '../constants/tabs-for-nav';
+import changeTab from '../utilites/change-tab';
 
-const Navigation = ({
-  activeTab,
-  reqHeader,
-  reqPhone,
-  toggle,
-  toggleError,
-}) => (
+const Navigation = ({ activeTab, header, phone, toggle, toggleError }) => (
   <Nav tabs>
     {tabs.map(({ index, name }) => {
       const handleActibeTab = () =>
-        changeTab(activeTab, reqHeader, reqPhone, toggle, toggleError, index);
+        changeTab(activeTab, header, phone, toggle, toggleError, index);
       return (
         <NavItem key={`${name}_${index}`} className="tab-name">
           <NavLink
@@ -33,22 +27,16 @@ const Navigation = ({
 
 Navigation.propTypes = {
   activeTab: PropTypes.number,
-  reqHeader: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
-  ]),
-  reqPhone: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
-  ]),
+  header: PropTypes.object,
+  phone: PropTypes.object,
   toggle: PropTypes.func,
   toggleError: PropTypes.func,
 };
 
 Navigation.defaultProps = {
   activeTab: 1,
-  reqHeader: null,
-  reqPhone: null,
+  header: { value: '', index: 1 },
+  phone: { value: '', index: 2 },
   toggle: () => {},
   toggleError: () => {},
 };

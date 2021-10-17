@@ -2,17 +2,11 @@ import React from 'react';
 import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const Contact = ({
-  phone,
-  prevTab,
-  reqPhone,
-  requiredSuccess,
-  setEmail,
-  setPhone,
-}) => {
-  const handleChangePhone = e => setPhone(e.target.value);
+const Contact = ({ phone, prevTab, requiredSuccess, setEmail, setPhone }) => {
+  const { value } = phone;
+  const handleChangePhone = e => setPhone({ ...phone, value: e.target.value });
   const handleChangeEmail = e => setEmail(e.target.value);
-  const handleClickNextTab = () => requiredSuccess(phone);
+  const handleClickNextTab = () => requiredSuccess(value);
 
   return (
     <TabPane tabId={2}>
@@ -22,15 +16,13 @@ const Contact = ({
             Phone number*
           </Label>
           <Input
-            ref={reqPhone}
             id="example-phone"
-            index={2}
             name="phone"
             onChange={handleChangePhone}
             placeholder="Your phone number"
             required
             type="text"
-            value={phone}
+            value={value}
           />
         </FormGroup>
         <FormGroup>
@@ -65,11 +57,7 @@ const Contact = ({
 };
 
 Contact.propTypes = {
-  phone: PropTypes.string,
-  reqPhone: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
-  ]),
+  phone: PropTypes.object,
   setEmail: PropTypes.func,
   setPhone: PropTypes.func,
   prevTab: PropTypes.func,
@@ -77,8 +65,7 @@ Contact.propTypes = {
 };
 
 Contact.defaultProps = {
-  phone: '',
-  reqPhone: null,
+  phone: { value: '', index: 2 },
   setEmail: () => {},
   setPhone: () => {},
   prevTab: () => {},

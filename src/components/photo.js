@@ -100,8 +100,8 @@ Photo.propTypes = {
       data_url: PropTypes.string,
     }),
   ),
-  header: PropTypes.string,
-  phone: PropTypes.string,
+  header: PropTypes.object,
+  phone: PropTypes.object,
   toggle: PropTypes.func,
   toggleError: PropTypes.func,
 };
@@ -112,8 +112,8 @@ Photo.defaultProps = {
   error: false,
   errorImg: () => {},
   images: [],
-  header: '',
-  phone: '',
+  header: { value: '', index: 1 },
+  phone: { value: '', index: 2 },
   toggle: () => {},
   toggleError: () => {},
 };

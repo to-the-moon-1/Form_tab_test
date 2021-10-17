@@ -1,29 +1,23 @@
 const newActiveTab = (
   activeTab,
   changeActiveTab,
-  {
-    current: {
-      props: { value: valueReqHeader, index: idReqHeader },
-    },
-  },
-  {
-    current: {
-      props: { value: valueReqPhone, index: idReqPhone },
-    },
-  },
+  header,
+  phone,
   toggle,
   toggleError,
   index,
 ) => {
-  const tab = index + 1;
+  const { value: valueReqHeader, index: idReqHeader } = header;
+  const { value: valueReqPhone, index: idReqPhone } = phone;
+  const tabNumber = index + 1;
   if (activeTab === idReqPhone) {
-    changeActiveTab(valueReqPhone, idReqPhone, tab);
+    changeActiveTab(valueReqPhone, idReqPhone, tabNumber);
   }
   if (activeTab === idReqHeader) {
-    changeActiveTab(valueReqHeader, idReqHeader, tab);
+    changeActiveTab(valueReqHeader, idReqHeader, tabNumber);
   }
   if (activeTab !== idReqPhone && activeTab !== idReqHeader) {
-    toggle(tab);
+    toggle(tabNumber);
   }
   if (valueReqHeader === '' && valueReqPhone === '') {
     toggle(idReqHeader);
@@ -31,8 +25,8 @@ const newActiveTab = (
   if (
     valueReqHeader !== '' &&
     valueReqPhone === '' &&
-    tab !== idReqHeader &&
-    tab !== idReqPhone
+    tabNumber !== idReqHeader &&
+    tabNumber !== idReqPhone
   ) {
     toggleError();
     toggle(idReqPhone);

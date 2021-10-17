@@ -47,10 +47,10 @@ const Publication = ({
           checked={checked}
           description={description}
           email={email}
-          header={header}
+          header={header.value}
           images={images}
           paidService={paidService}
-          phone={phone}
+          phone={phone.value}
         />
       </Form>
     </TabPane>
@@ -60,8 +60,8 @@ const Publication = ({
 Publication.propTypes = {
   description: PropTypes.string,
   email: PropTypes.string,
-  header: PropTypes.string,
-  phone: PropTypes.string,
+  header: PropTypes.object,
+  phone: PropTypes.object,
   checked: PropTypes.bool,
   setCheckedService: PropTypes.func,
   toggle: PropTypes.func,
@@ -81,8 +81,8 @@ Publication.propTypes = {
 Publication.defaultProps = {
   description: '',
   email: '',
-  header: '',
-  phone: '',
+  header: { value: '', index: 1 },
+  phone: { value: '', index: 2 },
   checked: false,
   setCheckedService: () => {},
   toggle: () => {},

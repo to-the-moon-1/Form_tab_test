@@ -8,14 +8,15 @@ const Information = ({
   checked,
   handleCheck,
   header,
-  reqHeader,
   requiredSuccess,
   setDescription,
   setHeader,
 }) => {
-  const handleChangeHeader = e => setHeader(e.target.value);
+  const { value } = header;
+  const handleChangeHeader = e =>
+    setHeader({ ...header, value: e.target.value });
   const handleChangeDescription = e => setDescription(e.target.value);
-  const handleClickNextTab = () => requiredSuccess(header);
+  const handleClickNextTab = () => requiredSuccess(value);
 
   return (
     <TabPane tabId={1}>
@@ -25,15 +26,13 @@ const Information = ({
             Header*
           </Label>
           <Input
-            ref={reqHeader}
             id="example-header"
-            index={1}
             name="header"
             onChange={handleChangeHeader}
             placeholder="Your header"
             required
             type="text"
-            value={header}
+            value={value}
           />
         </FormGroup>
         <FormGroup>
@@ -63,11 +62,7 @@ const Information = ({
 
 Information.propTypes = {
   checked: PropTypes.bool,
-  header: PropTypes.string,
-  reqHeader: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
-  ]),
+  header: PropTypes.object,
   handleCheck: PropTypes.func,
   setDescription: PropTypes.func,
   setHeader: PropTypes.func,
@@ -76,8 +71,7 @@ Information.propTypes = {
 
 Information.defaultProps = {
   checked: false,
-  header: '',
-  reqHeader: null,
+  header: { value: '', index: 1 },
   handleCheck: () => {},
   setDescription: () => {},
   setHeader: () => {},

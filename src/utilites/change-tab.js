@@ -1,13 +1,6 @@
 import newActiveTab from './new-active-tab';
 
-const changeTab = (
-  activeTab,
-  reqHeader,
-  reqPhone,
-  toggle,
-  toggleError,
-  index,
-) => {
+const changeTab = (activeTab, header, phone, toggle, toggleError, index) => {
   const firstPage = 1;
 
   const changeActiveTab = (isRequired, isRequiredIndex, tab) => {
@@ -26,8 +19,8 @@ const changeTab = (
   return newActiveTab(
     activeTab,
     changeActiveTab,
-    reqHeader,
-    reqPhone,
+    header,
+    phone,
     toggle,
     toggleError,
     index,

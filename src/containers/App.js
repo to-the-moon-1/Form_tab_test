@@ -1,18 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { TabContent } from 'reactstrap';
 
-import Navigation from './nav-tabs';
-import Information from './information';
-import Contact from './contact';
-import Photo from './photo';
-import Publication from './publication';
+import Navigation from '../components/nav-tabs';
+import Information from '../components/information';
+import Contact from '../components/contact';
+import Photo from '../components/photo';
+import Publication from '../components/publication';
 
-import './App.css';
+import '../App.css';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState(1);
-  const [header, setHeader] = useState('');
-  const [phone, setPhone] = useState('');
+  const [header, setHeader] = useState({ value: '', index: 1 });
+  const [phone, setPhone] = useState({ value: '', index: 2 });
   const [description, setDescription] = useState('');
   const [email, setEmail] = useState('');
   const [checked, setChecked] = useState(false);
@@ -25,9 +25,6 @@ const App = () => {
     { number: 'four', checked: false },
     { number: 'five', checked: false },
   ]);
-
-  const reqHeader = useRef(null);
-  const reqPhone = useRef(null);
 
   const maxNumberOfImages = 5;
 
@@ -70,8 +67,8 @@ const App = () => {
     <div className="wrapper">
       <Navigation
         activeTab={activeTab}
-        reqHeader={reqHeader}
-        reqPhone={reqPhone}
+        header={header}
+        phone={phone}
         toggle={toggle}
         toggleError={toggleError}
       />
@@ -80,7 +77,6 @@ const App = () => {
           checked={checked}
           handleCheck={handleCheck}
           header={header}
-          reqHeader={reqHeader}
           requiredSuccess={requiredSuccess}
           setDescription={setDescription}
           setHeader={setHeader}
@@ -88,7 +84,6 @@ const App = () => {
         <Contact
           phone={phone}
           prevTab={prevTab}
-          reqPhone={reqPhone}
           requiredSuccess={requiredSuccess}
           setEmail={setEmail}
           setPhone={setPhone}
