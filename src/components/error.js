@@ -2,7 +2,7 @@ import { Button, Modal, ModalBody } from 'reactstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import getWarning from '../utilites/warning';
+import getWarning from '../utilites/get-warning';
 
 const Error = ({ header, phone, error, toggleError }) => (
   <Modal className="position-of-error" isOpen={error} toggle={toggleError}>
@@ -18,8 +18,14 @@ const Error = ({ header, phone, error, toggleError }) => (
 );
 
 Error.propTypes = {
-  header: PropTypes.object,
-  phone: PropTypes.object,
+  header: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
+  phone: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
   error: PropTypes.bool,
   toggleError: PropTypes.func,
 };

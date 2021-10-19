@@ -2,10 +2,14 @@ import React from 'react';
 import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const Contact = ({ phone, prevTab, requiredSuccess, setEmail, setPhone }) => {
+const Contact = ({
+  handleChangeEmail,
+  handleChangePhone,
+  phone,
+  prevTab,
+  requiredSuccess,
+}) => {
   const { value } = phone;
-  const handleChangePhone = e => setPhone({ ...phone, value: e.target.value });
-  const handleChangeEmail = e => setEmail(e.target.value);
   const handleClickNextTab = () => requiredSuccess(value);
 
   return (
@@ -57,19 +61,22 @@ const Contact = ({ phone, prevTab, requiredSuccess, setEmail, setPhone }) => {
 };
 
 Contact.propTypes = {
-  phone: PropTypes.object,
-  setEmail: PropTypes.func,
-  setPhone: PropTypes.func,
+  phone: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
   prevTab: PropTypes.func,
   requiredSuccess: PropTypes.func,
+  handleChangeEmail: PropTypes.func,
+  handleChangePhone: PropTypes.func,
 };
 
 Contact.defaultProps = {
   phone: { value: '', index: 2 },
-  setEmail: () => {},
-  setPhone: () => {},
   prevTab: () => {},
   requiredSuccess: () => {},
+  handleChangeEmail: () => {},
+  handleChangePhone: () => {},
 };
 
 export default Contact;
