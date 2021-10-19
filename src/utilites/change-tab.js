@@ -1,4 +1,4 @@
-import newActiveTab from './new-active-tab';
+import setActiveTab from './set-active-tab';
 
 const changeTab = (activeTab, header, phone, toggle, toggleError, index) => {
   const firstPage = 1;
@@ -12,7 +12,7 @@ const changeTab = (activeTab, header, phone, toggle, toggleError, index) => {
     return null;
   };
 
-  return newActiveTab(
+  return setActiveTab(
     activeTab,
     changeActiveTab,
     header,

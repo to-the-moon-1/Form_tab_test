@@ -1,4 +1,4 @@
-const newActiveTab = (
+const setActiveTab = (
   activeTab,
   changeActiveTab,
   header,
@@ -34,4 +34,4 @@ const newActiveTab = (
   return null;
 };
 
-export default newActiveTab;
+export default setActiveTab;
