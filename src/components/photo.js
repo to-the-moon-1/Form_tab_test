@@ -7,7 +7,7 @@ import Error from './error';
 
 const Photo = ({
   maxNumberOfImages,
-  changeImg,
+  handleChangeImg,
   error,
   errorImg,
   images,
@@ -26,7 +26,7 @@ const Photo = ({
           dataURLKey="data_url"
           maxNumber={maxNumberOfImages}
           multiple
-          onChange={changeImg}
+          onChange={handleChangeImg}
           onError={errorImg}
           value={images}
         >
@@ -48,7 +48,7 @@ const Photo = ({
               {imageList.map((image, index) => {
                 const handleImageRemove = () => onImageRemove(index);
                 return (
-                  <div key={index} className="image-item">
+                  <div key={image.data_url} className="image-item">
                     <img
                       alt="Your img"
                       height="210"
@@ -92,7 +92,7 @@ const Photo = ({
 
 Photo.propTypes = {
   maxNumberOfImages: PropTypes.number,
-  changeImg: PropTypes.func,
+  handleChangeImg: PropTypes.func,
   error: PropTypes.bool,
   errorImg: PropTypes.func,
   images: PropTypes.arrayOf(
@@ -100,15 +100,21 @@ Photo.propTypes = {
       data_url: PropTypes.string,
     }),
   ),
-  header: PropTypes.object,
-  phone: PropTypes.object,
+  header: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
+  phone: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
   toggle: PropTypes.func,
   toggleError: PropTypes.func,
 };
 
 Photo.defaultProps = {
   maxNumberOfImages: PropTypes.number,
-  changeImg: () => {},
+  handleChangeImg: () => {},
   error: false,
   errorImg: () => {},
   images: [],

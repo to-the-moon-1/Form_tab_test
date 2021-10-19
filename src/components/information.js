@@ -6,16 +6,13 @@ import Check from './check';
 
 const Information = ({
   checked,
+  handleChangeDescription,
+  handleChangeHeader,
   handleCheck,
   header,
   requiredSuccess,
-  setDescription,
-  setHeader,
 }) => {
   const { value } = header;
-  const handleChangeHeader = e =>
-    setHeader({ ...header, value: e.target.value });
-  const handleChangeDescription = e => setDescription(e.target.value);
   const handleClickNextTab = () => requiredSuccess(value);
 
   return (
@@ -62,19 +59,22 @@ const Information = ({
 
 Information.propTypes = {
   checked: PropTypes.bool,
-  header: PropTypes.object,
+  header: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
+  handleChangeDescription: PropTypes.func,
+  handleChangeHeader: PropTypes.func,
   handleCheck: PropTypes.func,
-  setDescription: PropTypes.func,
-  setHeader: PropTypes.func,
   requiredSuccess: PropTypes.func,
 };
 
 Information.defaultProps = {
   checked: false,
   header: { value: '', index: 1 },
+  handleChangeDescription: () => {},
+  handleChangeHeader: () => {},
   handleCheck: () => {},
-  setDescription: () => {},
-  setHeader: () => {},
   requiredSuccess: () => {},
 };
 

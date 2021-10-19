@@ -7,7 +7,7 @@ import Contact from '../components/contact';
 import Photo from '../components/photo';
 import Publication from '../components/publication';
 
-import '../App.css';
+import '../styles/app.css';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -26,6 +26,19 @@ const App = () => {
     { number: 'five', checked: false },
   ]);
 
+  const handleChangeHeader = e => {
+    e.persist();
+    setHeader(prevHeader => ({ ...prevHeader, value: e.target.value }));
+  };
+
+  const handleChangePhone = e => {
+    e.persist();
+    setPhone(prevPhone => ({ ...prevPhone, value: e.target.value }));
+  };
+
+  const handleChangeDescription = e => setDescription(e.target.value);
+  const handleChangeEmail = e => setEmail(e.target.value);
+
   const maxNumberOfImages = 5;
 
   const nextTab = () => setActiveTab(activeTab + 1);
@@ -36,7 +49,7 @@ const App = () => {
   };
 
   const handleCheck = () => setChecked(!checked);
-  const changeImg = imageList => setImages(imageList);
+  const handleChangeImg = imageList => setImages(imageList);
   const toggleError = () => setError(!error);
 
   const requiredSuccess = param => {
@@ -75,23 +88,23 @@ const App = () => {
       <TabContent activeTab={activeTab} className="tab-card">
         <Information
           checked={checked}
+          handleChangeDescription={handleChangeDescription}
+          handleChangeHeader={handleChangeHeader}
           handleCheck={handleCheck}
           header={header}
           requiredSuccess={requiredSuccess}
-          setDescription={setDescription}
-          setHeader={setHeader}
         />
         <Contact
+          handleChangeEmail={handleChangeEmail}
+          handleChangePhone={handleChangePhone}
           phone={phone}
           prevTab={prevTab}
           requiredSuccess={requiredSuccess}
-          setEmail={setEmail}
-          setPhone={setPhone}
         />
         <Photo
-          changeImg={changeImg}
           error={error}
           errorImg={errorImg}
+          handleChangeImg={handleChangeImg}
           header={header}
           images={images}
           maxNumberOfImages={maxNumberOfImages}
@@ -103,11 +116,11 @@ const App = () => {
           checked={checked}
           description={description}
           email={email}
+          handlePaidService={handlePaidService}
           header={header}
           images={images}
           paidService={paidService}
           phone={phone}
-          setCheckedService={handlePaidService}
           toggle={toggle}
         />
       </TabContent>

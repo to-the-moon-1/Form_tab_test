@@ -12,7 +12,7 @@ const Navigation = ({ activeTab, header, phone, toggle, toggleError }) => (
       const handleActibeTab = () =>
         changeTab(activeTab, header, phone, toggle, toggleError, index);
       return (
-        <NavItem key={`${name}_${index}`} className="tab-name">
+        <NavItem key={name} className="tab-name">
           <NavLink
             className={classnames({ active: activeTab === index + 1 })}
             onClick={handleActibeTab}
@@ -27,8 +27,14 @@ const Navigation = ({ activeTab, header, phone, toggle, toggleError }) => (
 
 Navigation.propTypes = {
   activeTab: PropTypes.number,
-  header: PropTypes.object,
-  phone: PropTypes.object,
+  header: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
+  phone: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
   toggle: PropTypes.func,
   toggleError: PropTypes.func,
 };

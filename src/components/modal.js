@@ -42,8 +42,8 @@ const ModalBtn = ({
             </div>
             {images.length > 0 && (
               <div className="image-items">
-                {images.map((image, index) => (
-                  <div key={index} className="save-image-item">
+                {images.map(image => (
+                  <div key={image.data_url} className="save-image-item">
                     <img
                       alt="Your img"
                       height="210"
@@ -56,10 +56,10 @@ const ModalBtn = ({
             )}
             <ul className="service-items">
               {paidService.map(
-                ({ number, checked }, index) =>
+                ({ number, checked }) =>
                   checked && (
                     <li
-                      key={`${number}_${index}`}
+                      key={number}
                       className="save-text-item save-service-item"
                     >
                       Paid service {number}

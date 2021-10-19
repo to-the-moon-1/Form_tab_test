@@ -8,11 +8,11 @@ const Publication = ({
   checked,
   description,
   email,
+  handlePaidService,
   header,
   images,
   paidService,
   phone,
-  setCheckedService,
   toggle,
 }) => {
   const handleClickPrevTab = () => toggle(3);
@@ -20,14 +20,14 @@ const Publication = ({
   return (
     <TabPane tabId={4}>
       <Form>
-        {paidService.map(({ number, checked }, index) => (
-          <FormGroup key={`${number}_${index}`} check>
+        {paidService.map(({ number, checked }) => (
+          <FormGroup key={number} check>
             <Label check className="service-mg">
               <Input
                 className="checkbox"
                 defaultChecked={checked}
                 name={number}
-                onChange={setCheckedService}
+                onChange={handlePaidService}
                 type="checkbox"
               />{' '}
               <span className="label-checkbox no-text-transform">
@@ -60,10 +60,16 @@ const Publication = ({
 Publication.propTypes = {
   description: PropTypes.string,
   email: PropTypes.string,
-  header: PropTypes.object,
-  phone: PropTypes.object,
+  header: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
+  phone: PropTypes.shape({
+    value: PropTypes.string,
+    index: PropTypes.number,
+  }),
   checked: PropTypes.bool,
-  setCheckedService: PropTypes.func,
+  handlePaidService: PropTypes.func,
   toggle: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
@@ -84,7 +90,7 @@ Publication.defaultProps = {
   header: { value: '', index: 1 },
   phone: { value: '', index: 2 },
   checked: false,
-  setCheckedService: () => {},
+  handlePaidService: () => {},
   toggle: () => {},
   images: [],
   paidService: [],
