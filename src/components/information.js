@@ -9,11 +9,11 @@ const Information = ({
   handleChangeDescription,
   handleChangeHeader,
   handleCheck,
+  handleCheckRequiredField,
   header,
-  requiredSuccess,
 }) => {
   const { value } = header;
-  const handleClickNextTab = () => requiredSuccess(value);
+  const handleClickNextTab = () => handleCheckRequiredField(value);
 
   return (
     <TabPane tabId={1}>
@@ -66,7 +66,7 @@ Information.propTypes = {
   handleChangeDescription: PropTypes.func,
   handleChangeHeader: PropTypes.func,
   handleCheck: PropTypes.func,
-  requiredSuccess: PropTypes.func,
+  handleCheckRequiredField: PropTypes.func,
 };
 
 Information.defaultProps = {
@@ -75,7 +75,7 @@ Information.defaultProps = {
   handleChangeDescription: () => {},
   handleChangeHeader: () => {},
   handleCheck: () => {},
-  requiredSuccess: () => {},
+  handleCheckRequiredField: () => {},
 };
 
 export default Information;

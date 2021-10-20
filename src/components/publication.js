@@ -13,9 +13,9 @@ const Publication = ({
   images,
   paidService,
   phone,
-  toggle,
+  toggleTab,
 }) => {
-  const handleClickPrevTab = () => toggle(3);
+  const handleClickPrevTab = () => toggleTab(3);
 
   return (
     <TabPane tabId={4}>
@@ -70,7 +70,7 @@ Publication.propTypes = {
   }),
   checked: PropTypes.bool,
   handlePaidService: PropTypes.func,
-  toggle: PropTypes.func,
+  toggleTab: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       data_url: PropTypes.string,
@@ -91,7 +91,7 @@ Publication.defaultProps = {
   phone: { value: '', index: 2 },
   checked: false,
   handlePaidService: () => {},
-  toggle: () => {},
+  toggleTab: () => {},
   images: [],
   paidService: [],
 };

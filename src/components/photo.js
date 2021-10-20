@@ -6,28 +6,28 @@ import PropTypes from 'prop-types';
 import Error from './error';
 
 const Photo = ({
-  maxNumberOfImages,
+  maxCountOfImages,
   handleChangeImg,
+  handleCheckErrorImg,
   error,
-  errorImg,
   images,
   header,
   phone,
-  toggle,
+  toggleTab,
   toggleError,
 }) => {
-  const handleClickPrevTab = () => toggle(2);
-  const handleClickNextTab = () => toggle(4);
+  const handleClickPrevTab = () => toggleTab(2);
+  const handleClickNextTab = () => toggleTab(4);
 
   return (
     <TabPane tabId={3}>
       <Form>
         <ImageUploading
           dataURLKey="data_url"
-          maxNumber={maxNumberOfImages}
+          maxNumber={maxCountOfImages}
           multiple
           onChange={handleChangeImg}
-          onError={errorImg}
+          onError={handleCheckErrorImg}
           value={images}
         >
           {({ imageList, onImageUpload, onImageRemove, dragProps }) => (
@@ -91,10 +91,10 @@ const Photo = ({
 };
 
 Photo.propTypes = {
-  maxNumberOfImages: PropTypes.number,
+  maxCountOfImages: PropTypes.number,
   handleChangeImg: PropTypes.func,
   error: PropTypes.bool,
-  errorImg: PropTypes.func,
+  handleCheckErrorImg: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       data_url: PropTypes.string,
@@ -108,19 +108,19 @@ Photo.propTypes = {
     value: PropTypes.string,
     index: PropTypes.number,
   }),
-  toggle: PropTypes.func,
+  toggleTab: PropTypes.func,
   toggleError: PropTypes.func,
 };
 
 Photo.defaultProps = {
-  maxNumberOfImages: PropTypes.number,
+  maxCountOfImages: PropTypes.number,
   handleChangeImg: () => {},
   error: false,
-  errorImg: () => {},
+  handleCheckErrorImg: () => {},
   images: [],
   header: { value: '', index: 1 },
   phone: { value: '', index: 2 },
-  toggle: () => {},
+  toggleTab: () => {},
   toggleError: () => {},
 };
 

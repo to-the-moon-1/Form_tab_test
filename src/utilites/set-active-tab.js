@@ -1,36 +1,18 @@
+const firstPage = 1;
+
 const setActiveTab = (
-  activeTab,
-  changeActiveTab,
-  header,
-  phone,
-  toggle,
+  isRequired,
+  isRequiredIndex,
+  tab,
+  toggleTab,
   toggleError,
-  index,
+  activeTab,
 ) => {
-  const { value: valueReqHeader, index: idReqHeader } = header;
-  const { value: valueReqPhone, index: idReqPhone } = phone;
-  const tabNumber = index + 1;
-  if (activeTab === idReqPhone) {
-    changeActiveTab(valueReqPhone, idReqPhone, tabNumber);
-  }
-  if (activeTab === idReqHeader) {
-    changeActiveTab(valueReqHeader, idReqHeader, tabNumber);
-  }
-  if (activeTab !== idReqPhone && activeTab !== idReqHeader) {
-    toggle(tabNumber);
-  }
-  if (valueReqHeader === '' && valueReqPhone === '') {
-    toggle(idReqHeader);
-  }
-  if (
-    valueReqHeader !== '' &&
-    valueReqPhone === '' &&
-    tabNumber !== idReqHeader &&
-    tabNumber !== idReqPhone
-  ) {
+  if (isRequired === '' && tab === activeTab - 1) toggleTab(activeTab - 1);
+  if (isRequired === '' && tab !== firstPage && tab !== isRequiredIndex) {
     toggleError();
-    toggle(idReqPhone);
   }
+  if (isRequired.length > 0) toggleTab(tab);
   return null;
 };
 

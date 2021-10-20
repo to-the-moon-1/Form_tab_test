@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TabContent } from 'reactstrap';
 
 import Navigation from '../components/nav-tabs';
@@ -7,52 +7,32 @@ import Contact from '../components/contact';
 import Photo from '../components/photo';
 import Publication from '../components/publication';
 
+import useActiveTab from '../hooks/use-active-tab';
+import useHeader from '../hooks/use-header';
+import usePhone from '../hooks/use-phone';
+import useDescription from '../hooks/use-description';
+import useEmail from '../hooks/use-email';
+import useChecked from '../hooks/use-checked';
+import useError from '../hooks/use-error';
+import useImages from '../hooks/use-images';
+import usePaidService from '../hooks/use-paid-service';
+
 import '../styles/app.css';
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState(1);
-  const [header, setHeader] = useState({ value: '', index: 1 });
-  const [phone, setPhone] = useState({ value: '', index: 2 });
-  const [description, setDescription] = useState('');
-  const [email, setEmail] = useState('');
-  const [checked, setChecked] = useState(false);
-  const [error, setError] = useState(false);
-  const [images, setImages] = useState([]);
-  const [paidService, setPaidService] = useState([
-    { number: 'one', checked: false },
-    { number: 'two', checked: false },
-    { number: 'three', checked: false },
-    { number: 'four', checked: false },
-    { number: 'five', checked: false },
-  ]);
+  const { activeTab, nextTab, prevTab, toggleTab } = useActiveTab();
+  const { handleChangeHeader, header } = useHeader();
+  const { handleChangePhone, phone } = usePhone();
+  const { description, handleChangeDescription } = useDescription();
+  const { email, handleChangeEmail } = useEmail();
+  const { checked, handleCheck } = useChecked();
+  const { error, toggleError } = useError();
+  const { handleChangeImg, images } = useImages();
+  const { handlePaidService, paidService } = usePaidService();
 
-  const handleChangeHeader = e => {
-    e.persist();
-    setHeader(prevHeader => ({ ...prevHeader, value: e.target.value }));
-  };
+  const maxCountOfImages = 5;
 
-  const handleChangePhone = e => {
-    e.persist();
-    setPhone(prevPhone => ({ ...prevPhone, value: e.target.value }));
-  };
-
-  const handleChangeDescription = e => setDescription(e.target.value);
-  const handleChangeEmail = e => setEmail(e.target.value);
-
-  const maxNumberOfImages = 5;
-
-  const nextTab = () => setActiveTab(activeTab + 1);
-  const prevTab = () => setActiveTab(activeTab - 1);
-
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
-
-  const handleCheck = () => setChecked(!checked);
-  const handleChangeImg = imageList => setImages(imageList);
-  const toggleError = () => setError(!error);
-
-  const requiredSuccess = param => {
+  const handleCheckRequiredField = param => {
     if (param === '') {
       toggleError();
     }
@@ -62,18 +42,9 @@ const App = () => {
     return null;
   };
 
-  const errorImg = errors => {
+  const handleCheckErrorImg = errors => {
     if (!errors.maxNumber) return;
     toggleError();
-  };
-
-  const handlePaidService = ({ target: { name, checked } }) => {
-    const index = paidService.findIndex(({ number }) => number === name);
-    const item = paidService[index];
-    const newPaidService = [...paidService];
-    newPaidService[index] = { ...item, checked };
-
-    setPaidService(newPaidService);
   };
 
   return (
@@ -82,8 +53,8 @@ const App = () => {
         activeTab={activeTab}
         header={header}
         phone={phone}
-        toggle={toggle}
         toggleError={toggleError}
+        toggleTab={toggleTab}
       />
       <TabContent activeTab={activeTab} className="tab-card">
         <Information
@@ -91,26 +62,26 @@ const App = () => {
           handleChangeDescription={handleChangeDescription}
           handleChangeHeader={handleChangeHeader}
           handleCheck={handleCheck}
+          handleCheckRequiredField={handleCheckRequiredField}
           header={header}
-          requiredSuccess={requiredSuccess}
         />
         <Contact
           handleChangeEmail={handleChangeEmail}
           handleChangePhone={handleChangePhone}
+          handleCheckRequiredField={handleCheckRequiredField}
           phone={phone}
           prevTab={prevTab}
-          requiredSuccess={requiredSuccess}
         />
         <Photo
           error={error}
-          errorImg={errorImg}
           handleChangeImg={handleChangeImg}
+          handleCheckErrorImg={handleCheckErrorImg}
           header={header}
           images={images}
-          maxNumberOfImages={maxNumberOfImages}
+          maxCountOfImages={maxCountOfImages}
           phone={phone}
-          toggle={toggle}
           toggleError={toggleError}
+          toggleTab={toggleTab}
         />
         <Publication
           checked={checked}
@@ -121,7 +92,7 @@ const App = () => {
           images={images}
           paidService={paidService}
           phone={phone}
-          toggle={toggle}
+          toggleTab={toggleTab}
         />
       </TabContent>
     </div>

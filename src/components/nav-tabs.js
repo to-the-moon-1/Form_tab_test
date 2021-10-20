@@ -1,20 +1,20 @@
 import React from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import classnames from 'classnames';
+import cl from 'classnames';
 import PropTypes from 'prop-types';
 
 import tabs from '../constants/tabs-for-nav';
 import changeTab from '../utilites/change-tab';
 
-const Navigation = ({ activeTab, header, phone, toggle, toggleError }) => (
+const Navigation = ({ activeTab, header, phone, toggleTab, toggleError }) => (
   <Nav tabs>
     {tabs.map(({ index, name }) => {
       const handleActibeTab = () =>
-        changeTab(activeTab, header, phone, toggle, toggleError, index);
+        changeTab(activeTab, header, phone, toggleTab, toggleError, index);
       return (
         <NavItem key={name} className="tab-name">
           <NavLink
-            className={classnames({ active: activeTab === index + 1 })}
+            className={cl({ active: activeTab === index + 1 })}
             onClick={handleActibeTab}
           >
             {name}
@@ -35,7 +35,7 @@ Navigation.propTypes = {
     value: PropTypes.string,
     index: PropTypes.number,
   }),
-  toggle: PropTypes.func,
+  toggleTab: PropTypes.func,
   toggleError: PropTypes.func,
 };
 
@@ -43,7 +43,7 @@ Navigation.defaultProps = {
   activeTab: 1,
   header: { value: '', index: 1 },
   phone: { value: '', index: 2 },
-  toggle: () => {},
+  toggleTab: () => {},
   toggleError: () => {},
 };
 

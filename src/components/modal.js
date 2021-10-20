@@ -3,7 +3,6 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const ModalBtn = ({
-  className,
   header,
   description,
   paidService,
@@ -27,7 +26,7 @@ const ModalBtn = ({
       >
         Save
       </Button>
-      <Modal className={className} isOpen={modal} toggle={toggle}>
+      <Modal isOpen={modal} toggle={toggle}>
         <div className="card-pd">
           <ModalHeader>Your ad</ModalHeader>
           <ModalBody>
@@ -100,7 +99,6 @@ ModalBtn.propTypes = {
       checked: PropTypes.bool,
     }),
   ),
-  className: PropTypes.string,
 };
 
 ModalBtn.defaultProps = {
@@ -111,7 +109,6 @@ ModalBtn.defaultProps = {
   checked: false,
   images: [],
   paidService: [],
-  className: '',
 };
 
 export default ModalBtn;

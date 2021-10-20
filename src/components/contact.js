@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 const Contact = ({
   handleChangeEmail,
   handleChangePhone,
+  handleCheckRequiredField,
   phone,
   prevTab,
-  requiredSuccess,
 }) => {
   const { value } = phone;
-  const handleClickNextTab = () => requiredSuccess(value);
+  const handleClickNextTab = () => handleCheckRequiredField(value);
 
   return (
     <TabPane tabId={2}>
@@ -66,7 +66,7 @@ Contact.propTypes = {
     index: PropTypes.number,
   }),
   prevTab: PropTypes.func,
-  requiredSuccess: PropTypes.func,
+  handleCheckRequiredField: PropTypes.func,
   handleChangeEmail: PropTypes.func,
   handleChangePhone: PropTypes.func,
 };
@@ -74,7 +74,7 @@ Contact.propTypes = {
 Contact.defaultProps = {
   phone: { value: '', index: 2 },
   prevTab: () => {},
-  requiredSuccess: () => {},
+  handleCheckRequiredField: () => {},
   handleChangeEmail: () => {},
   handleChangePhone: () => {},
 };
