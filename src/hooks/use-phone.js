@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import phone from '../constants/phone';
 
-const usePhone = (initialPhone = { value: '', index: 2 }) => {
+const usePhone = (initialPhone = phone) => {
   const [phone, setPhone] = useState(initialPhone);
 
   const handleChangePhone = e => {

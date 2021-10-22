@@ -5,7 +5,12 @@ const useError = (initialError = false) => {
 
   const toggleError = () => setError(!error);
 
-  return { error, toggleError };
+  const handleCheckErrorImg = errors => {
+    if (!errors.maxNumber) return;
+    toggleError();
+  };
+
+  return { error, handleCheckErrorImg, toggleError };
 };
 
 export default useError;

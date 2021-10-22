@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import header from '../constants/header';
 
-const useHeader = (initialHeader = { value: '', index: 1 }) => {
+const useHeader = (initialHeader = header) => {
   const [header, setHeader] = useState(initialHeader);
 
   const handleChangeHeader = e => {

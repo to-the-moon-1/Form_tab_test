@@ -26,7 +26,7 @@ const App = () => {
   const { description, handleChangeDescription } = useDescription();
   const { email, handleChangeEmail } = useEmail();
   const { checked, handleCheck } = useChecked();
-  const { error, toggleError } = useError();
+  const { error, handleCheckErrorImg, toggleError } = useError();
   const { handleChangeImg, images } = useImages();
   const { handlePaidService, paidService } = usePaidService();
 
@@ -40,11 +40,6 @@ const App = () => {
       return nextTab();
     }
     return null;
-  };
-
-  const handleCheckErrorImg = errors => {
-    if (!errors.maxNumber) return;
-    toggleError();
   };
 
   return (

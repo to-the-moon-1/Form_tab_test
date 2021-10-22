@@ -3,16 +3,19 @@ const firstPage = 1;
 const setActiveTab = (
   isRequired,
   isRequiredIndex,
-  tab,
-  toggleTab,
-  toggleError,
-  activeTab,
+  { tabNumber, toggleTab, toggleError, activeTab },
 ) => {
-  if (isRequired === '' && tab === activeTab - 1) toggleTab(activeTab - 1);
-  if (isRequired === '' && tab !== firstPage && tab !== isRequiredIndex) {
+  if (isRequired === '' && tabNumber === activeTab - 1) {
+    toggleTab(activeTab - 1);
+  }
+  if (
+    isRequired === '' &&
+    tabNumber !== firstPage &&
+    tabNumber !== isRequiredIndex
+  ) {
     toggleError();
   }
-  if (isRequired.length > 0) toggleTab(tab);
+  if (isRequired.length > 0) toggleTab(tabNumber);
   return null;
 };
 

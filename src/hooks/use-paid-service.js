@@ -1,14 +1,7 @@
 import { useState } from 'react';
+import paidServices from '../constants/paid-services';
 
-const usePaidService = (
-  initialPaidService = [
-    { number: 'one', checked: false },
-    { number: 'two', checked: false },
-    { number: 'three', checked: false },
-    { number: 'four', checked: false },
-    { number: 'five', checked: false },
-  ],
-) => {
+const usePaidService = (initialPaidService = paidServices) => {
   const [paidService, setPaidService] = useState(initialPaidService);
 
   const handlePaidService = ({ target: { name, checked } }) => {
