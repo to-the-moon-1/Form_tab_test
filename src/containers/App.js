@@ -7,11 +7,12 @@ import Contact from '../components/contact';
 import Photo from '../components/photo';
 import Publication from '../components/publication';
 
+import initialHeader from '../constants/initial-header';
+import initialPhone from '../constants/initial-phone';
+
 import useActiveTab from '../hooks/use-active-tab';
-import useHeader from '../hooks/use-header';
-import usePhone from '../hooks/use-phone';
-import useDescription from '../hooks/use-description';
-import useEmail from '../hooks/use-email';
+import useTextField from '../hooks/use-text-field';
+import useTextReqField from '../hooks/use-text-req-field';
 import useChecked from '../hooks/use-checked';
 import useError from '../hooks/use-error';
 import useImages from '../hooks/use-images';
@@ -21,20 +22,20 @@ import '../styles/app.css';
 
 const App = () => {
   const { activeTab, nextTab, prevTab, toggleTab } = useActiveTab();
-  const { handleChangeHeader, header } = useHeader();
-  const { handleChangePhone, phone } = usePhone();
-  const { description, handleChangeDescription } = useDescription();
-  const { email, handleChangeEmail } = useEmail();
-  const { checked, handleCheck } = useChecked();
+  const [header, handleChangeHeader] = useTextReqField(initialHeader);
+  const [phone, handleChangePhone] = useTextReqField(initialPhone);
+  const [description, handleChangeDescription] = useTextField();
+  const [email, handleChangeEmail] = useTextField();
+  const [checked, handleCheck] = useChecked();
   const { error, handleCheckErrorImg, toggleError } = useError();
-  const { handleChangeImg, images } = useImages();
-  const { handlePaidService, paidService } = usePaidService();
+  const [images, handleChangeImg] = useImages();
+  const [paidService, handlePaidService] = usePaidService();
 
   const maxCountOfImages = 5;
 
   const handleCheckRequiredField = param => {
     if (param === '') {
-      toggleError();
+      return toggleError();
     }
     if (param.length > 0) {
       return nextTab();

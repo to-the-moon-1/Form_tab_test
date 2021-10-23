@@ -5,7 +5,7 @@ const useChecked = (initialChecked = false) => {
 
   const handleCheck = () => setChecked(!checked);
 
-  return { checked, handleCheck };
+  return [checked, handleCheck];
 };
 
 export default useChecked;

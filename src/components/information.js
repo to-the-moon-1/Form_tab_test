@@ -10,9 +10,8 @@ const Information = ({
   handleChangeHeader,
   handleCheck,
   handleCheckRequiredField,
-  header,
+  header: { value },
 }) => {
-  const { value } = header;
   const handleClickNextTab = () => handleCheckRequiredField(value);
 
   return (

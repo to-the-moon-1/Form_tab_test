@@ -5,7 +5,7 @@ const useImages = (initialImages = []) => {
 
   const handleChangeImg = imageList => setImages(imageList);
 
-  return { handleChangeImg, images };
+  return [images, handleChangeImg];
 };
 
 export default useImages;

@@ -26,8 +26,16 @@
   width: 140px;
 }
 
+.tab-name:hover {
+  cursor: pointer;
+}
+
 .card-pd {
   margin: 15px 12px;
+}
+
+.modal-dialog {
+  padding-bottom: 160px;
 }
 
 .modal-content {

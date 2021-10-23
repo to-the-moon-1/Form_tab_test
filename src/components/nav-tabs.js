@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import cl from 'classnames';
+import cn from 'classnames';
 import PropTypes from 'prop-types';
 
 import tabs from '../constants/tabs-for-nav';
@@ -9,14 +9,15 @@ import changeTab from '../utilites/change-tab';
 const Navigation = ({ activeTab, header, phone, toggleTab, toggleError }) => (
   <Nav tabs>
     {tabs.map(({ index, name }) => {
-      const handleActibeTab = () =>
-        changeTab(activeTab, header, phone, toggleTab, toggleError, index);
+      const activeClass = cn({ active: activeTab === index + 1 });
+      const handleActibeTab = () => {
+        const { value, error } = changeTab(activeTab, header, phone, index);
+        if (error) toggleError();
+        if (value) toggleTab(value);
+      };
       return (
         <NavItem key={name} className="tab-name">
-          <NavLink
-            className={cl({ active: activeTab === index + 1 })}
-            onClick={handleActibeTab}
-          >
+          <NavLink className={activeClass} onClick={handleActibeTab}>
             {name}
           </NavLink>
         </NavItem>

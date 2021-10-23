@@ -13,7 +13,7 @@ const usePaidService = (initialPaidService = paidServices) => {
     setPaidService(newPaidService);
   };
 
-  return { handlePaidService, paidService };
+  return [paidService, handlePaidService];
 };
 
 export default usePaidService;

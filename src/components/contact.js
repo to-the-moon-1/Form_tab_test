@@ -6,10 +6,9 @@ const Contact = ({
   handleChangeEmail,
   handleChangePhone,
   handleCheckRequiredField,
-  phone,
+  phone: { value },
   prevTab,
 }) => {
-  const { value } = phone;
   const handleClickNextTab = () => handleCheckRequiredField(value);
 
   return (
