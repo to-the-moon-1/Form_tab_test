@@ -4,17 +4,12 @@ import cn from 'classnames';
 import PropTypes from 'prop-types';
 
 import tabs from '../constants/tabs-for-nav';
-import changeTab from '../utilites/change-tab';
 
-const Navigation = ({ activeTab, header, phone, toggleTab, toggleError }) => (
+const Navigation = ({ activeTab, onChangeActiveTab }) => (
   <Nav tabs>
     {tabs.map(({ index, name }) => {
       const activeClass = cn({ active: activeTab === index + 1 });
-      const handleActibeTab = () => {
-        const { value, error } = changeTab(activeTab, header, phone, index);
-        if (error) toggleError();
-        if (value) toggleTab(value);
-      };
+      const handleActibeTab = () => onChangeActiveTab(index);
       return (
         <NavItem key={name} className="tab-name">
           <NavLink className={activeClass} onClick={handleActibeTab}>
@@ -28,24 +23,12 @@ const Navigation = ({ activeTab, header, phone, toggleTab, toggleError }) => (
 
 Navigation.propTypes = {
   activeTab: PropTypes.number,
-  header: PropTypes.shape({
-    value: PropTypes.string,
-    index: PropTypes.number,
-  }),
-  phone: PropTypes.shape({
-    value: PropTypes.string,
-    index: PropTypes.number,
-  }),
-  toggleTab: PropTypes.func,
-  toggleError: PropTypes.func,
+  onChangeActiveTab: PropTypes.func,
 };
 
 Navigation.defaultProps = {
   activeTab: 1,
-  header: { value: '', index: 1 },
-  phone: { value: '', index: 2 },
-  toggleTab: () => {},
-  toggleError: () => {},
+  onChangeActiveTab: () => {},
 };
 
 export default Navigation;

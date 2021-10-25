@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const Contact = ({
+const Contacts = ({
   handleChangeEmail,
   handleChangePhone,
   handleCheckRequiredField,
@@ -59,7 +59,7 @@ const Contact = ({
   );
 };
 
-Contact.propTypes = {
+Contacts.propTypes = {
   phone: PropTypes.shape({
     value: PropTypes.string,
     index: PropTypes.number,
@@ -70,7 +70,7 @@ Contact.propTypes = {
   handleChangePhone: PropTypes.func,
 };
 
-Contact.defaultProps = {
+Contacts.defaultProps = {
   phone: { value: '', index: 2 },
   prevTab: () => {},
   handleCheckRequiredField: () => {},
@@ -78,4 +78,4 @@ Contact.defaultProps = {
   handleChangePhone: () => {},
 };
 
-export default Contact;
+export default Contacts;

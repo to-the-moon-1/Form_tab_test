@@ -5,16 +5,15 @@ import PropTypes from 'prop-types';
 
 import Error from './error';
 
-const Photo = ({
+const Photos = ({
   maxCountOfImages,
   handleChangeImg,
   handleCheckErrorImg,
   error,
   images,
-  header,
-  phone,
   toggleTab,
   toggleError,
+  warning,
 }) => {
   const handleClickPrevTab = () => toggleTab(2);
   const handleClickNextTab = () => toggleTab(4);
@@ -31,7 +30,7 @@ const Photo = ({
           value={images}
         >
           {({ imageList, onImageUpload, onImageRemove, dragProps }) => (
-            <div>
+            <>
               <div
                 {...dragProps}
                 className="image-download-btn"
@@ -41,34 +40,37 @@ const Photo = ({
               </div>
               <Error
                 error={error}
-                header={header}
-                phone={phone}
                 toggleError={toggleError}
+                warning={warning}
               />
-              {imageList.map((image, index) => {
-                const handleImageRemove = () => onImageRemove(index);
-                return (
-                  <div key={image.data_url} className="image-item">
-                    <img
-                      alt="Your img"
-                      height="210"
-                      src={image.data_url}
-                      width="159"
-                    />
-                    <div>
-                      <Button
-                        className="one-third-of-width-btn"
-                        color="danger"
-                        onClick={handleImageRemove}
-                        outline
-                      >
-                        Remove
-                      </Button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+              {imageList.length > 0 && (
+                <ul className="clear-list-style">
+                  {imageList.map((image, index) => {
+                    const handleImageRemove = () => onImageRemove(index);
+                    return (
+                      <li key={image.data_url} className="image-item">
+                        <img
+                          alt="Your img"
+                          height="210"
+                          src={image.data_url}
+                          width="159"
+                        />
+                        <div>
+                          <Button
+                            className="one-third-of-width-btn"
+                            color="danger"
+                            onClick={handleImageRemove}
+                            outline
+                          >
+                            Remove
+                          </Button>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </>
           )}
         </ImageUploading>
         <Button
@@ -90,7 +92,7 @@ const Photo = ({
   );
 };
 
-Photo.propTypes = {
+Photos.propTypes = {
   maxCountOfImages: PropTypes.number,
   handleChangeImg: PropTypes.func,
   error: PropTypes.bool,
@@ -100,28 +102,20 @@ Photo.propTypes = {
       data_url: PropTypes.string,
     }),
   ),
-  header: PropTypes.shape({
-    value: PropTypes.string,
-    index: PropTypes.number,
-  }),
-  phone: PropTypes.shape({
-    value: PropTypes.string,
-    index: PropTypes.number,
-  }),
   toggleTab: PropTypes.func,
   toggleError: PropTypes.func,
+  warning: PropTypes.string,
 };
 
-Photo.defaultProps = {
-  maxCountOfImages: PropTypes.number,
+Photos.defaultProps = {
+  maxCountOfImages: 5,
   handleChangeImg: () => {},
   error: false,
   handleCheckErrorImg: () => {},
   images: [],
-  header: { value: '', index: 1 },
-  phone: { value: '', index: 2 },
   toggleTab: () => {},
   toggleError: () => {},
+  warning: '',
 };
 
-export default Photo;
+export default Photos;

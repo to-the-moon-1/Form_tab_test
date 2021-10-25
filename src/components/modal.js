@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const ModalBtn = ({
+const ModalWindow = ({
+  checkPaidService,
   header,
   description,
-  paidService,
   phone,
   email,
   checked,
@@ -40,32 +40,28 @@ const ModalBtn = ({
               Checkbox: {checked === false ? 'OFF' : 'ON'}
             </div>
             {images.length > 0 && (
-              <div className="image-items">
+              <ul className="image-items clear-list-style">
                 {images.map(image => (
-                  <div key={image.data_url} className="save-image-item">
+                  <li key={image.data_url} className="save-image-item">
                     <img
                       alt="Your img"
                       height="210"
                       src={image.data_url}
                       width="157"
                     />
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
-            <ul className="service-items">
-              {paidService.map(
-                ({ number, checked }) =>
-                  checked && (
-                    <li
-                      key={number}
-                      className="save-text-item save-service-item"
-                    >
-                      Paid service {number}
-                    </li>
-                  ),
-              )}
-            </ul>
+            {checkPaidService.length > 0 && (
+              <ul className="service-items">
+                {checkPaidService.map(({ number }) => (
+                  <li key={number} className="save-text-item save-service-item">
+                    Paid service {number}
+                  </li>
+                ))}
+              </ul>
+            )}
           </ModalBody>
           <ModalFooter>
             <Button
@@ -82,7 +78,7 @@ const ModalBtn = ({
   );
 };
 
-ModalBtn.propTypes = {
+ModalWindow.propTypes = {
   header: PropTypes.string,
   phone: PropTypes.string,
   email: PropTypes.string,
@@ -93,7 +89,7 @@ ModalBtn.propTypes = {
       data_url: PropTypes.string,
     }),
   ),
-  paidService: PropTypes.arrayOf(
+  checkPaidService: PropTypes.arrayOf(
     PropTypes.shape({
       number: PropTypes.string,
       checked: PropTypes.bool,
@@ -101,14 +97,14 @@ ModalBtn.propTypes = {
   ),
 };
 
-ModalBtn.defaultProps = {
+ModalWindow.defaultProps = {
   header: '',
   phone: '',
   email: '',
   description: '',
   checked: false,
   images: [],
-  paidService: [],
+  checkPaidService: [],
 };
 
-export default ModalBtn;
+export default ModalWindow;

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, TabPane, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, TabPane, Form, Label, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import ModalBtn from './modal';
+import ModalWindow from './modal';
 
 const Publication = ({
   checked,
+  checkPaidService,
   description,
   email,
   handlePaidService,
@@ -20,22 +21,24 @@ const Publication = ({
   return (
     <TabPane tabId={4}>
       <Form>
-        {paidService.map(({ number, checked }) => (
-          <FormGroup key={number} check>
-            <Label check className="service-mg">
-              <Input
-                className="checkbox"
-                defaultChecked={checked}
-                name={number}
-                onChange={handlePaidService}
-                type="checkbox"
-              />{' '}
-              <span className="label-checkbox no-text-transform">
-                Paid service {number}
-              </span>
-            </Label>
-          </FormGroup>
-        ))}
+        <ul className="clear-list-style">
+          {paidService.map(({ number, checked }) => (
+            <li key={number}>
+              <Label check className="service-mg">
+                <Input
+                  className="checkbox"
+                  defaultChecked={checked}
+                  name={number}
+                  onChange={handlePaidService}
+                  type="checkbox"
+                />{' '}
+                <span className="label-checkbox no-text-transform">
+                  Paid service {number}
+                </span>
+              </Label>
+            </li>
+          ))}
+        </ul>
         <Button
           className="half-of-width-btn service-btn left-btn label-mg"
           color="secondary"
@@ -43,13 +46,13 @@ const Publication = ({
         >
           Prev
         </Button>{' '}
-        <ModalBtn
+        <ModalWindow
           checked={checked}
+          checkPaidService={checkPaidService}
           description={description}
           email={email}
           header={header.value}
           images={images}
-          paidService={paidService}
           phone={phone.value}
         />
       </Form>
@@ -82,6 +85,12 @@ Publication.propTypes = {
       checked: PropTypes.bool,
     }),
   ),
+  checkPaidService: PropTypes.arrayOf(
+    PropTypes.shape({
+      number: PropTypes.string,
+      checked: PropTypes.bool,
+    }),
+  ),
 };
 
 Publication.defaultProps = {
@@ -94,6 +103,7 @@ Publication.defaultProps = {
   toggleTab: () => {},
   images: [],
   paidService: [],
+  checkPaidService: [],
 };
 
 export default Publication;

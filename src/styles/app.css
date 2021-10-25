@@ -34,6 +34,12 @@
   margin: 15px 12px;
 }
 
+.clear-list-style {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .modal-dialog {
   padding-bottom: 160px;
 }
@@ -133,11 +139,8 @@
   margin-bottom: 15px;
 }
 
-.image-item:nth-child(2),
-.image-item:nth-child(odd) {
-  margin-right: 15px;
-}
-
+.image-item:first-child,
+.image-item:nth-child(even),
 .save-image-item:first-child,
 .save-image-item:nth-child(even) {
   margin-right: 15px;

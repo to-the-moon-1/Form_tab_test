@@ -7,13 +7,18 @@ const usePaidService = (initialPaidService = paidServices) => {
   const handlePaidService = ({ target: { name, checked } }) => {
     const index = paidService.findIndex(({ number }) => number === name);
     const item = paidService[index];
-    const newPaidService = [...paidService];
-    newPaidService[index] = { ...item, checked };
 
-    setPaidService(newPaidService);
+    setPaidService(prevPaidService =>
+      Object.values({
+        ...prevPaidService,
+        [index]: { ...item, checked },
+      }),
+    );
   };
 
-  return [paidService, handlePaidService];
+  const checkPaidService = paidService.filter(service => service.checked);
+
+  return { checkPaidService, paidService, handlePaidService };
 };
 
 export default usePaidService;
