@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const useTextField = (initialTextField = '') => {
   const [textField, setTextField] = useState(initialTextField);
 
-  const handleChangeTextField = e => setTextField(e.target.value);
+  const handleChangeTextField = useCallback(
+    e => setTextField(e.target.value),
+    [],
+  );
 
   return [textField, handleChangeTextField];
 };

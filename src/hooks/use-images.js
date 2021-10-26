@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const useImages = (initialImages = []) => {
   const [images, setImages] = useState(initialImages);
 
-  const handleChangeImg = imageList => setImages(imageList);
+  const handleChangeImg = useCallback(imageList => setImages(imageList), []);
 
   return [images, handleChangeImg];
 };

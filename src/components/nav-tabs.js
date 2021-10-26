@@ -3,15 +3,13 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 
-import tabs from '../constants/tabs-for-nav';
-
-const Navigation = ({ activeTab, onChangeActiveTab }) => (
+const Navigation = ({ activeTab, onChangeActiveTab, tabs }) => (
   <Nav tabs>
     {tabs.map(({ index, name }) => {
       const activeClass = cn({ active: activeTab === index + 1 });
       const handleActibeTab = () => onChangeActiveTab(index);
       return (
-        <NavItem key={name} className="tab-name">
+        <NavItem key={Math.floor(Math.random() * 1000)} className="tab-name">
           <NavLink className={activeClass} onClick={handleActibeTab}>
             {name}
           </NavLink>
@@ -24,11 +22,18 @@ const Navigation = ({ activeTab, onChangeActiveTab }) => (
 Navigation.propTypes = {
   activeTab: PropTypes.number,
   onChangeActiveTab: PropTypes.func,
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      index: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ),
 };
 
 Navigation.defaultProps = {
   activeTab: 1,
   onChangeActiveTab: () => {},
+  tabs: [],
 };
 
 export default Navigation;

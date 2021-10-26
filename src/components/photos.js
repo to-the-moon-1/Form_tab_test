@@ -48,7 +48,10 @@ const Photos = ({
                   {imageList.map((image, index) => {
                     const handleImageRemove = () => onImageRemove(index);
                     return (
-                      <li key={image.data_url} className="image-item">
+                      <li
+                        key={Math.floor(Math.random() * 1000)}
+                        className="image-item"
+                      >
                         <img
                           alt="Your img"
                           height="210"

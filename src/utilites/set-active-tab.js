@@ -8,6 +8,7 @@ const setActiveTab = (
   if (isRequired === '' && tabNumber === activeTab - 1) {
     return { value: activeTab - 1 };
   }
+
   if (
     isRequired === '' &&
     tabNumber !== firstPage &&
@@ -15,7 +16,9 @@ const setActiveTab = (
   ) {
     return { error: true };
   }
+
   if (isRequired.length > 0) return { value: tabNumber };
+
   return null;
 };
 

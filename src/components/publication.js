@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import ModalWindow from './modal';
 
 const Publication = ({
-  checked,
   checkPaidService,
+  checkTitle,
   description,
   email,
   handlePaidService,
@@ -23,7 +23,7 @@ const Publication = ({
       <Form>
         <ul className="clear-list-style">
           {paidService.map(({ number, checked }) => (
-            <li key={number}>
+            <li key={Math.floor(Math.random() * 1000)}>
               <Label check className="service-mg">
                 <Input
                   className="checkbox"
@@ -47,8 +47,8 @@ const Publication = ({
           Prev
         </Button>{' '}
         <ModalWindow
-          checked={checked}
           checkPaidService={checkPaidService}
+          checkTitle={checkTitle}
           description={description}
           email={email}
           header={header.value}
@@ -61,6 +61,7 @@ const Publication = ({
 };
 
 Publication.propTypes = {
+  checkTitle: PropTypes.string,
   description: PropTypes.string,
   email: PropTypes.string,
   header: PropTypes.shape({
@@ -71,7 +72,6 @@ Publication.propTypes = {
     value: PropTypes.string,
     index: PropTypes.number,
   }),
-  checked: PropTypes.bool,
   handlePaidService: PropTypes.func,
   toggleTab: PropTypes.func,
   images: PropTypes.arrayOf(
@@ -94,11 +94,11 @@ Publication.propTypes = {
 };
 
 Publication.defaultProps = {
+  checkTitle: 'OFF',
   description: '',
   email: '',
   header: { value: '', index: 1 },
   phone: { value: '', index: 2 },
-  checked: false,
   handlePaidService: () => {},
   toggleTab: () => {},
   images: [],

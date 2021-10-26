@@ -1,6 +1,8 @@
 import React from 'react';
 import { TabContent } from 'reactstrap';
 
+import tabs from '../constants/tabs-for-nav';
+
 import getWarning from '../utilites/get-warning';
 import changeTab from '../utilites/change-tab';
 
@@ -29,7 +31,7 @@ const App = () => {
   const [phone, handleChangePhone] = useTextReqField(initialPhone);
   const [description, handleChangeDescription] = useTextField();
   const [email, handleChangeEmail] = useTextField();
-  const [checked, handleCheck] = useChecked();
+  const { checked, handleCheck, checkTitle } = useChecked();
   const { error, handleCheckErrorImg, toggleError } = useError();
   const [images, handleChangeImg] = useImages();
   const { checkPaidService, paidService, handlePaidService } = usePaidService();
@@ -56,10 +58,15 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      <Navigation activeTab={activeTab} onChangeActiveTab={onChangeActiveTab} />
+      <Navigation
+        activeTab={activeTab}
+        onChangeActiveTab={onChangeActiveTab}
+        tabs={tabs}
+      />
       <TabContent activeTab={activeTab} className="tab-card">
         <Information
           checked={checked}
+          checkTitle={checkTitle}
           handleChangeDescription={handleChangeDescription}
           handleChangeHeader={handleChangeHeader}
           handleCheck={handleCheck}
@@ -84,8 +91,8 @@ const App = () => {
           warning={warning}
         />
         <Publication
-          checked={checked}
           checkPaidService={checkPaidService}
+          checkTitle={checkTitle}
           description={description}
           email={email}
           handlePaidService={handlePaidService}

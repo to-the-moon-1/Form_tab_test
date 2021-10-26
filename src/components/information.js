@@ -6,6 +6,7 @@ import Check from './check';
 
 const Information = ({
   checked,
+  checkTitle,
   handleChangeDescription,
   handleChangeHeader,
   handleCheck,
@@ -43,7 +44,11 @@ const Information = ({
             type="textarea"
           />
         </FormGroup>
-        <Check checked={checked} setChecked={handleCheck} />
+        <Check
+          checked={checked}
+          checkTitle={checkTitle}
+          setChecked={handleCheck}
+        />
         <Button
           className="full-of-width-btn label-mg"
           color="primary"
@@ -58,6 +63,7 @@ const Information = ({
 
 Information.propTypes = {
   checked: PropTypes.bool,
+  checkTitle: PropTypes.string,
   header: PropTypes.shape({
     value: PropTypes.string,
     index: PropTypes.number,
@@ -70,6 +76,7 @@ Information.propTypes = {
 
 Information.defaultProps = {
   checked: false,
+  checkTitle: 'OFF',
   header: { value: '', index: 1 },
   handleChangeDescription: () => {},
   handleChangeHeader: () => {},

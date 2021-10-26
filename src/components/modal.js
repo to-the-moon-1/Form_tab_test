@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 const ModalWindow = ({
   checkPaidService,
+  checkTitle,
   header,
   description,
   phone,
   email,
-  checked,
   images,
 }) => {
   const [modal, setModal] = useState(false);
@@ -36,13 +36,14 @@ const ModalWindow = ({
             )}
             <div className="save-text-item">Phone number: {phone}</div>
             {email && <div className="save-text-item">Email: {email}</div>}
-            <div className="save-text-item">
-              Checkbox: {checked === false ? 'OFF' : 'ON'}
-            </div>
+            <div className="save-text-item">Checkbox: {checkTitle}</div>
             {images.length > 0 && (
               <ul className="image-items clear-list-style">
                 {images.map(image => (
-                  <li key={image.data_url} className="save-image-item">
+                  <li
+                    key={Math.floor(Math.random() * 1000)}
+                    className="save-image-item"
+                  >
                     <img
                       alt="Your img"
                       height="210"
@@ -56,7 +57,10 @@ const ModalWindow = ({
             {checkPaidService.length > 0 && (
               <ul className="service-items">
                 {checkPaidService.map(({ number }) => (
-                  <li key={number} className="save-text-item save-service-item">
+                  <li
+                    key={Math.floor(Math.random() * 1000)}
+                    className="save-text-item save-service-item"
+                  >
                     Paid service {number}
                   </li>
                 ))}
@@ -79,11 +83,11 @@ const ModalWindow = ({
 };
 
 ModalWindow.propTypes = {
+  checkTitle: PropTypes.string,
   header: PropTypes.string,
   phone: PropTypes.string,
   email: PropTypes.string,
   description: PropTypes.string,
-  checked: PropTypes.bool,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       data_url: PropTypes.string,
@@ -98,11 +102,11 @@ ModalWindow.propTypes = {
 };
 
 ModalWindow.defaultProps = {
+  checkTitle: 'OFF',
   header: '',
   phone: '',
   email: '',
   description: '',
-  checked: false,
   images: [],
   checkPaidService: [],
 };

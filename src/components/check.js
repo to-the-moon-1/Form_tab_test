@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const Check = ({ checked, setChecked }) => (
+const Check = ({ checked, checkTitle, setChecked }) => (
   <FormGroup check className="service-mg">
     <Label check className="label-mg">
       <Input
@@ -11,18 +11,20 @@ const Check = ({ checked, setChecked }) => (
         onChange={setChecked}
         type="checkbox"
       />{' '}
-      <span className="label-checkbox">{checked ? 'ON' : 'OFF'}</span>
+      <span className="label-checkbox">{checkTitle}</span>
     </Label>
   </FormGroup>
 );
 
 Check.propTypes = {
   checked: PropTypes.bool,
+  checkTitle: PropTypes.string,
   setChecked: PropTypes.func,
 };
 
 Check.defaultProps = {
   checked: false,
+  checkTitle: 'OFF',
   setChecked: () => {},
 };
 

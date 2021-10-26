@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const useActiveTab = (initialActiveTab = 1) => {
   const [activeTab, setActiveTab] = useState(initialActiveTab);
 
-  const nextTab = () => setActiveTab(activeTab + 1);
-  const prevTab = () => setActiveTab(activeTab - 1);
+  const nextTab = useCallback(() => setActiveTab(activeTab + 1), [activeTab]);
+  const prevTab = useCallback(() => setActiveTab(activeTab - 1), [activeTab]);
 
-  const toggleTab = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
+  const toggleTab = useCallback(
+    tab => {
+      if (activeTab !== tab) setActiveTab(tab);
+    },
+    [activeTab],
+  );
 
   return {
     activeTab,
