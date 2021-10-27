@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 
-import Check from './check';
+import Checkbox from './checkbox';
 
 const Information = ({
   checked,
@@ -44,7 +44,7 @@ const Information = ({
             type="textarea"
           />
         </FormGroup>
-        <Check
+        <Checkbox
           checked={checked}
           checkTitle={checkTitle}
           setChecked={handleCheck}

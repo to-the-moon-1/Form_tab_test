@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
 import { Button, TabPane, Form } from 'reactstrap';
-import PropTypes from 'prop-types';
 
 import Error from './error';
 
@@ -22,7 +22,7 @@ const Photos = ({
     <TabPane tabId={3}>
       <Form>
         <ImageUploading
-          dataURLKey="data_url"
+          dataURLKey="dataUrl"
           maxNumber={maxCountOfImages}
           multiple
           onChange={handleChangeImg}
@@ -45,17 +45,14 @@ const Photos = ({
               />
               {imageList.length > 0 && (
                 <ul className="clear-list-style">
-                  {imageList.map((image, index) => {
+                  {imageList.map(({ dataUrl }, index) => {
                     const handleImageRemove = () => onImageRemove(index);
                     return (
-                      <li
-                        key={Math.floor(Math.random() * 1000)}
-                        className="image-item"
-                      >
+                      <li key={`${dataUrl}_download`} className="image-item">
                         <img
                           alt="Your img"
                           height="210"
-                          src={image.data_url}
+                          src={dataUrl}
                           width="159"
                         />
                         <div>
@@ -102,7 +99,7 @@ Photos.propTypes = {
   handleCheckErrorImg: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      data_url: PropTypes.string,
+      dataUrl: PropTypes.string,
     }),
   ),
   toggleTab: PropTypes.func,

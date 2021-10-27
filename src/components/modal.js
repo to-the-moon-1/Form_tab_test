@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
+// Modal is already reserved in the library 'reactstrap';
 const ModalWindow = ({
   checkPaidService,
   checkTitle,
@@ -39,15 +40,12 @@ const ModalWindow = ({
             <div className="save-text-item">Checkbox: {checkTitle}</div>
             {images.length > 0 && (
               <ul className="image-items clear-list-style">
-                {images.map(image => (
-                  <li
-                    key={Math.floor(Math.random() * 1000)}
-                    className="save-image-item"
-                  >
+                {images.map(({ dataUrl }) => (
+                  <li key={`${dataUrl}_save`} className="save-image-item">
                     <img
                       alt="Your img"
                       height="210"
-                      src={image.data_url}
+                      src={dataUrl}
                       width="157"
                     />
                   </li>
@@ -58,7 +56,7 @@ const ModalWindow = ({
               <ul className="service-items">
                 {checkPaidService.map(({ number }) => (
                   <li
-                    key={Math.floor(Math.random() * 1000)}
+                    key={`${number}_save`}
                     className="save-text-item save-service-item"
                   >
                     Paid service {number}
@@ -90,7 +88,7 @@ ModalWindow.propTypes = {
   description: PropTypes.string,
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      data_url: PropTypes.string,
+      dataUrl: PropTypes.string,
     }),
   ),
   checkPaidService: PropTypes.arrayOf(

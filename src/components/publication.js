@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, TabPane, Form, Label, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { Button, TabPane, Form, Label, Input } from 'reactstrap';
 
 import ModalWindow from './modal';
 
@@ -23,7 +23,7 @@ const Publication = ({
       <Form>
         <ul className="clear-list-style">
           {paidService.map(({ number, checked }) => (
-            <li key={Math.floor(Math.random() * 1000)}>
+            <li key={`${number}_checkbox`}>
               <Label check className="service-mg">
                 <Input
                   className="checkbox"

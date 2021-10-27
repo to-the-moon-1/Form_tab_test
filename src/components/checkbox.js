@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { FormGroup, Input, Label } from 'reactstrap';
 
-const Check = ({ checked, checkTitle, setChecked }) => (
+const Checkbox = ({ checked, checkTitle, setChecked }) => (
   <FormGroup check className="service-mg">
     <Label check className="label-mg">
       <Input
@@ -16,16 +16,16 @@ const Check = ({ checked, checkTitle, setChecked }) => (
   </FormGroup>
 );
 
-Check.propTypes = {
+Checkbox.propTypes = {
   checked: PropTypes.bool,
   checkTitle: PropTypes.string,
   setChecked: PropTypes.func,
 };
 
-Check.defaultProps = {
+Checkbox.defaultProps = {
   checked: false,
   checkTitle: 'OFF',
   setChecked: () => {},
 };
 
-export default Check;
+export default Checkbox;

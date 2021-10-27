@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
 
 const Contacts = ({
   handleChangeEmail,

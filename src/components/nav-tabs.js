@@ -1,7 +1,7 @@
 import React from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
-import cn from 'classnames';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 
 const Navigation = ({ activeTab, onChangeActiveTab, tabs }) => (
   <Nav tabs>
@@ -9,7 +9,7 @@ const Navigation = ({ activeTab, onChangeActiveTab, tabs }) => (
       const activeClass = cn({ active: activeTab === index + 1 });
       const handleActibeTab = () => onChangeActiveTab(index);
       return (
-        <NavItem key={Math.floor(Math.random() * 1000)} className="tab-name">
+        <NavItem key={`${name}_tab`} className="tab-name">
           <NavLink className={activeClass} onClick={handleActibeTab}>
             {name}
           </NavLink>

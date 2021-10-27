@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import paidServices from '../constants/paid-services';
 
 const usePaidService = (initialPaidService = paidServices) => {
@@ -19,7 +19,10 @@ const usePaidService = (initialPaidService = paidServices) => {
     [paidService],
   );
 
-  const checkPaidService = paidService.filter(({ checked }) => checked);
+  const checkPaidService = useMemo(
+    () => paidService.filter(({ checked }) => checked),
+    [paidService],
+  );
 
   return { checkPaidService, paidService, handlePaidService };
 };

@@ -1,6 +1,6 @@
-import { Button, Modal, ModalBody } from 'reactstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button, Modal, ModalBody } from 'reactstrap';
 
 const Error = ({ error, toggleError, warning }) => (
   <Modal className="position-of-error" isOpen={error} toggle={toggleError}>
