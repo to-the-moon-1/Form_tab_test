@@ -5,7 +5,6 @@ const useImages = (initialImages = []) => {
 
   const handleChangeImg = useCallback(imageList => setImages(imageList), []);
 
-  // imageList is already reserved in the library 'react-images-uploading';
   return [images, handleChangeImg];
 };
 

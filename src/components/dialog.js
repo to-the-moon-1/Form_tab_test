@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
-// Modal is already reserved in the library 'reactstrap';
-const ModalWindow = ({
+import { SaveBtn } from './buttons';
+
+const Dialog = ({
   checkPaidService,
   checkTitle,
   header,
@@ -20,13 +21,10 @@ const ModalWindow = ({
 
   return (
     <>
-      <Button
+      <SaveBtn
         className="half-of-width-btn service-btn label-mg"
-        color="success"
         onClick={toggle}
-      >
-        Save
-      </Button>
+      />
       <Modal isOpen={modal} toggle={toggle}>
         <div className="card-pd">
           <ModalHeader>Your ad</ModalHeader>
@@ -61,11 +59,7 @@ const ModalWindow = ({
             )}
           </ModalBody>
           <ModalFooter>
-            <Button
-              className="half-of-width-btn btn"
-              color="secondary"
-              onClick={toggle}
-            >
+            <Button className="half-of-width-btn btn" onClick={toggle}>
               Cancel
             </Button>
           </ModalFooter>
@@ -75,7 +69,7 @@ const ModalWindow = ({
   );
 };
 
-ModalWindow.propTypes = {
+Dialog.propTypes = {
   checkTitle: PropTypes.string,
   header: PropTypes.string,
   phone: PropTypes.string,
@@ -94,7 +88,7 @@ ModalWindow.propTypes = {
   ),
 };
 
-ModalWindow.defaultProps = {
+Dialog.defaultProps = {
   checkTitle: 'OFF',
   header: '',
   phone: '',
@@ -104,4 +98,4 @@ ModalWindow.defaultProps = {
   checkPaidService: [],
 };
 
-export default ModalWindow;
+export default Dialog;

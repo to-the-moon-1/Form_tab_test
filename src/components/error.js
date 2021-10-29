@@ -7,7 +7,7 @@ const Error = ({ error, toggleError, warning }) => (
     <div className="card-pd">
       <ModalBody>
         <span>{warning}</span>
-        <Button className="error-btn" color="secondary" onClick={toggleError}>
+        <Button className="error-btn" onClick={toggleError}>
           Okay
         </Button>
       </ModalBody>

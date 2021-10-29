@@ -17,7 +17,7 @@ const setActiveTab = (
     return { error: true };
   }
 
-  if (isRequired.length > 0) return { value: tabNumber };
+  if (isRequired.length) return { value: tabNumber };
 
   return null;
 };

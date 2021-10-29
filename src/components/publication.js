@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, TabPane, Form, Label, Input } from 'reactstrap';
+import { Button, Label, Input } from 'reactstrap';
 
-import ModalWindow from './modal';
+import Dialog from './dialog';
 
 const Publication = ({
   checkPaidService,
@@ -19,44 +19,41 @@ const Publication = ({
   const handleClickPrevTab = () => toggleTab(3);
 
   return (
-    <TabPane tabId={4}>
-      <Form>
-        <ul className="clear-list-style">
-          {paidService.map(({ number, checked }) => (
-            <li key={`${number}_checkbox`}>
-              <Label check className="service-mg">
-                <Input
-                  className="checkbox"
-                  defaultChecked={checked}
-                  name={number}
-                  onChange={handlePaidService}
-                  type="checkbox"
-                />{' '}
-                <span className="label-checkbox no-text-transform">
-                  Paid service {number}
-                </span>
-              </Label>
-            </li>
-          ))}
-        </ul>
-        <Button
-          className="half-of-width-btn service-btn left-btn label-mg"
-          color="secondary"
-          onClick={handleClickPrevTab}
-        >
-          Prev
-        </Button>{' '}
-        <ModalWindow
-          checkPaidService={checkPaidService}
-          checkTitle={checkTitle}
-          description={description}
-          email={email}
-          header={header.value}
-          images={images}
-          phone={phone.value}
-        />
-      </Form>
-    </TabPane>
+    <>
+      <ul className="clear-list-style">
+        {paidService.map(({ number, checked }) => (
+          <li key={`${number}_checkbox`}>
+            <Label check className="service-mg">
+              <Input
+                className="checkbox"
+                defaultChecked={checked}
+                name={number}
+                onChange={handlePaidService}
+                type="checkbox"
+              />{' '}
+              <span className="label-checkbox no-text-transform">
+                Paid service {number}
+              </span>
+            </Label>
+          </li>
+        ))}
+      </ul>
+      <Button
+        className="half-of-width-btn service-btn left-btn label-mg"
+        onClick={handleClickPrevTab}
+      >
+        Prev
+      </Button>{' '}
+      <Dialog
+        checkPaidService={checkPaidService}
+        checkTitle={checkTitle}
+        description={description}
+        email={email}
+        header={header.value}
+        images={images}
+        phone={phone.value}
+      />
+    </>
   );
 };
 

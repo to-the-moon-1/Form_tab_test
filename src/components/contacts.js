@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, FormGroup, Label, Input, TabPane, Form } from 'reactstrap';
+import { Button, FormGroup, Label, Input } from 'reactstrap';
+
+import { NextBtn } from './buttons';
 
 const Contacts = ({
   handleChangeEmail,
@@ -12,50 +14,41 @@ const Contacts = ({
   const handleClickNextTab = () => handleCheckRequiredField(value);
 
   return (
-    <TabPane tabId={2}>
-      <Form>
-        <FormGroup>
-          <Label className="label" for="example-phone">
-            Phone number*
-          </Label>
-          <Input
-            id="example-phone"
-            name="phone"
-            onChange={handleChangePhone}
-            placeholder="Your phone number"
-            required
-            type="text"
-            value={value}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label className="label label-mg" for="example-email">
-            Email
-          </Label>
-          <Input
-            id="example-email"
-            name="email"
-            onChange={handleChangeEmail}
-            placeholder="Your email"
-            type="text"
-          />
-        </FormGroup>
-        <Button
-          className="half-of-width-btn left-btn label-mg"
-          color="secondary"
-          onClick={prevTab}
-        >
-          Prev
-        </Button>{' '}
-        <Button
-          className="half-of-width-btn label-mg"
-          color="primary"
-          onClick={handleClickNextTab}
-        >
-          Next
-        </Button>{' '}
-      </Form>
-    </TabPane>
+    <>
+      <FormGroup>
+        <Label className="label" for="example-phone">
+          Phone number*
+        </Label>
+        <Input
+          id="example-phone"
+          name="phone"
+          onChange={handleChangePhone}
+          placeholder="Your phone number"
+          required
+          type="text"
+          value={value}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label className="label label-mg" for="example-email">
+          Email
+        </Label>
+        <Input
+          id="example-email"
+          name="email"
+          onChange={handleChangeEmail}
+          placeholder="Your email"
+          type="text"
+        />
+      </FormGroup>
+      <Button className="half-of-width-btn left-btn label-mg" onClick={prevTab}>
+        Prev
+      </Button>{' '}
+      <NextBtn
+        className="half-of-width-btn label-mg"
+        onClick={handleClickNextTab}
+      />{' '}
+    </>
   );
 };
 

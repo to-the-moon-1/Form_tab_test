@@ -15,10 +15,7 @@ import useImages from '../hooks/use-images';
 import usePaidService from '../hooks/use-paid-service';
 
 import Navigation from '../components/nav-tabs';
-import Information from '../components/information';
-import Contacts from '../components/contacts';
-import Photos from '../components/photos';
-import Publication from '../components/publication';
+import Sections from '../components/sections';
 
 import '../styles/app.css';
 
@@ -60,43 +57,31 @@ const App = () => {
         tabs={tabs}
       />
       <TabContent activeTab={activeTab} className="tab-card">
-        <Information
+        <Sections
           checked={checked}
-          checkTitle={checkTitle}
-          handleChangeDescription={handleChangeDescription}
-          handleChangeHeader={handleChangeHeader}
-          handleCheck={handleCheck}
-          handleCheckRequiredField={handleCheckRequiredField}
-          header={header}
-        />
-        <Contacts
-          handleChangeEmail={handleChangeEmail}
-          handleChangePhone={handleChangePhone}
-          handleCheckRequiredField={handleCheckRequiredField}
-          phone={phone}
-          prevTab={prevTab}
-        />
-        <Photos
-          error={error}
-          handleChangeImg={handleChangeImg}
-          handleCheckErrorImg={handleCheckErrorImg}
-          images={images}
-          maxCountOfImages={maxCountOfImages}
-          toggleError={toggleError}
-          toggleTab={toggleTab}
-          warning={warning}
-        />
-        <Publication
           checkPaidService={checkPaidService}
           checkTitle={checkTitle}
           description={description}
           email={email}
+          error={error}
+          handleChangeDescription={handleChangeDescription}
+          handleChangeEmail={handleChangeEmail}
+          handleChangeHeader={handleChangeHeader}
+          handleChangeImg={handleChangeImg}
+          handleChangePhone={handleChangePhone}
+          handleCheck={handleCheck}
+          handleCheckErrorImg={handleCheckErrorImg}
+          handleCheckRequiredField={handleCheckRequiredField}
           handlePaidService={handlePaidService}
           header={header}
           images={images}
+          maxCountOfImages={maxCountOfImages}
           paidService={paidService}
           phone={phone}
+          prevTab={prevTab}
+          toggleError={toggleError}
           toggleTab={toggleTab}
+          warning={warning}
         />
       </TabContent>
     </div>
