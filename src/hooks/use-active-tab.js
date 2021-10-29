@@ -6,12 +6,9 @@ const useActiveTab = (initialActiveTab = 1) => {
   const nextTab = useCallback(() => setActiveTab(activeTab + 1), [activeTab]);
   const prevTab = useCallback(() => setActiveTab(activeTab - 1), [activeTab]);
 
-  const toggleTab = useCallback(
-    tab => {
-      if (activeTab !== tab) setActiveTab(tab);
-    },
-    [activeTab],
-  );
+  const toggleTab = useCallback(tab => activeTab !== tab && setActiveTab(tab), [
+    activeTab,
+  ]);
 
   return {
     activeTab,

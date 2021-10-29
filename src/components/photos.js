@@ -51,9 +51,8 @@ const Photos = ({
                       <li key={`${dataUrl}_download`} className="image-item">
                         <img
                           alt="Your img"
-                          height="210"
+                          className="image-size"
                           src={dataUrl}
-                          width="159"
                         />
                         <div>
                           <Button

@@ -46,7 +46,7 @@
 
 .modal-content {
   margin: -10px -30px;
-  min-width: 560px;
+  min-width: 570px;
   position: relative;
   top: 80px;
 }
@@ -127,6 +127,11 @@
 
 .save-text-item {
   font-size: 18px;
+}
+
+.image-size {
+  height: 210px;
+  width: 157px;
 }
 
 .image-item,

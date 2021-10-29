@@ -39,12 +39,8 @@ const App = () => {
   const maxCountOfImages = 5;
 
   const handleCheckRequiredField = param => {
-    if (param === '') {
-      return toggleError();
-    }
-    if (param.length > 0) {
-      return nextTab();
-    }
+    if (param === '') toggleError();
+    if (param.length > 0) nextTab();
     return null;
   };
 

@@ -42,12 +42,7 @@ const ModalWindow = ({
               <ul className="image-items clear-list-style">
                 {images.map(({ dataUrl }) => (
                   <li key={`${dataUrl}_save`} className="save-image-item">
-                    <img
-                      alt="Your img"
-                      height="210"
-                      src={dataUrl}
-                      width="157"
-                    />
+                    <img alt="Your img" className="image-size" src={dataUrl} />
                   </li>
                 ))}
               </ul>
