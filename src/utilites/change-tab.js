@@ -8,8 +8,8 @@ const changeTab = (activeTab, header, phone, index) => {
   const baseActiveTabAttrs = { tabNumber, activeTab };
 
   if (
-    valueReqHeader !== '' &&
-    valueReqPhone === '' &&
+    valueReqHeader &&
+    !valueReqPhone &&
     tabNumber !== idReqHeader &&
     tabNumber !== idReqPhone
   ) {
@@ -28,7 +28,7 @@ const changeTab = (activeTab, header, phone, index) => {
     return { value: tabNumber };
   }
 
-  if (valueReqHeader === '' && valueReqPhone === '') {
+  if (valueReqHeader && valueReqPhone) {
     return { value: idReqHeader };
   }
 

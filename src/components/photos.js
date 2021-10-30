@@ -41,10 +41,10 @@ const Photos = ({
             <Error error={error} toggleError={toggleError} warning={warning} />
             {imageList.length > 0 && (
               <ul className="clear-list-style">
-                {imageList.map(({ dataUrl }, index) => {
-                  const handleImageRemove = () => onImageRemove(index);
+                {imageList.map(({ dataUrl, key }) => {
+                  const handleImageRemove = () => onImageRemove(key);
                   return (
-                    <li key={`${dataUrl}_${index}_load`} className="image-item">
+                    <li key={`${dataUrl}_${key}_load`} className="image-item">
                       <img
                         alt="Your img"
                         className="image-size"

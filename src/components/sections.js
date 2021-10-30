@@ -1,84 +1,29 @@
 import React from 'react';
 import { TabPane, Form } from 'reactstrap';
 
-import getSection from '../utilites/get-section';
-
 const Sections = ({
-  checked,
-  checkPaidService,
-  checkTitle,
-  description,
-  email,
-  error,
-  handleChangeDescription,
-  handleChangeEmail,
-  handleChangeHeader,
-  handleChangeImg,
-  handleChangePhone,
-  handleCheck,
-  handleCheckErrorImg,
-  handleCheckRequiredField,
-  handlePaidService,
-  header,
-  images,
-  maxCountOfImages,
-  paidService,
-  phone,
-  prevTab,
-  toggleError,
-  toggleTab,
-  warning,
+  informationProps,
+  contactsProps,
+  photosProps,
+  publicationProps,
+  getSection,
 }) => {
   const section = [
     {
       name: 'Information',
-      props: {
-        checked,
-        checkTitle,
-        handleChangeDescription,
-        handleChangeHeader,
-        handleCheck,
-        handleCheckRequiredField,
-        header,
-      },
+      props: informationProps,
     },
     {
       name: 'Contacts',
-      props: {
-        handleChangeEmail,
-        handleChangePhone,
-        handleCheckRequiredField,
-        phone,
-        prevTab,
-      },
+      props: contactsProps,
     },
     {
       name: 'Photos',
-      props: {
-        error,
-        handleChangeImg,
-        handleCheckErrorImg,
-        images,
-        maxCountOfImages,
-        toggleError,
-        toggleTab,
-        warning,
-      },
+      props: photosProps,
     },
     {
       name: 'Publication',
-      props: {
-        checkPaidService,
-        checkTitle,
-        description,
-        email,
-        handlePaidService,
-        header,
-        images,
-        paidService,
-        phone,
-        toggleTab,
-      },
+      props: publicationProps,
     },
   ];
 

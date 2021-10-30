@@ -4,6 +4,7 @@ import { TabContent } from 'reactstrap';
 import tabs from '../constants/tabs-for-nav';
 
 import getWarning from '../utilites/get-warning';
+import getSection from '../utilites/get-section';
 import changeTab from '../utilites/change-tab';
 
 import useActiveTab from '../hooks/use-active-tab';
@@ -36,8 +37,8 @@ const App = () => {
   const maxCountOfImages = 5;
 
   const handleCheckRequiredField = param => {
-    if (param === '') toggleError();
-    if (param.length > 0) nextTab();
+    if (!param) toggleError();
+    if (param.length) nextTab();
     return null;
   };
 
@@ -49,6 +50,48 @@ const App = () => {
     if (value) toggleTab(value);
   };
 
+  const informationProps = {
+    checked,
+    checkTitle,
+    handleChangeDescription,
+    handleChangeHeader,
+    handleCheck,
+    handleCheckRequiredField,
+    header,
+  };
+
+  const contactsProps = {
+    handleChangeEmail,
+    handleChangePhone,
+    handleCheckRequiredField,
+    phone,
+    prevTab,
+  };
+
+  const photosProps = {
+    error,
+    handleChangeImg,
+    handleCheckErrorImg,
+    images,
+    maxCountOfImages,
+    toggleError,
+    toggleTab,
+    warning,
+  };
+
+  const publicationProps = {
+    checkPaidService,
+    checkTitle,
+    description,
+    email,
+    handlePaidService,
+    header,
+    images,
+    paidService,
+    phone,
+    toggleTab,
+  };
+
   return (
     <div className="wrapper">
       <Navigation
@@ -58,30 +101,11 @@ const App = () => {
       />
       <TabContent activeTab={activeTab} className="tab-card">
         <Sections
-          checked={checked}
-          checkPaidService={checkPaidService}
-          checkTitle={checkTitle}
-          description={description}
-          email={email}
-          error={error}
-          handleChangeDescription={handleChangeDescription}
-          handleChangeEmail={handleChangeEmail}
-          handleChangeHeader={handleChangeHeader}
-          handleChangeImg={handleChangeImg}
-          handleChangePhone={handleChangePhone}
-          handleCheck={handleCheck}
-          handleCheckErrorImg={handleCheckErrorImg}
-          handleCheckRequiredField={handleCheckRequiredField}
-          handlePaidService={handlePaidService}
-          header={header}
-          images={images}
-          maxCountOfImages={maxCountOfImages}
-          paidService={paidService}
-          phone={phone}
-          prevTab={prevTab}
-          toggleError={toggleError}
-          toggleTab={toggleTab}
-          warning={warning}
+          contactsProps={contactsProps}
+          getSection={getSection}
+          informationProps={informationProps}
+          photosProps={photosProps}
+          publicationProps={publicationProps}
         />
       </TabContent>
     </div>

@@ -5,15 +5,11 @@ const setActiveTab = (
   isRequiredIndex,
   { tabNumber, activeTab },
 ) => {
-  if (isRequired === '' && tabNumber === activeTab - 1) {
+  if (!isRequired && tabNumber === activeTab - 1) {
     return { value: activeTab - 1 };
   }
 
-  if (
-    isRequired === '' &&
-    tabNumber !== firstPage &&
-    tabNumber !== isRequiredIndex
-  ) {
+  if (!isRequired && tabNumber !== firstPage && tabNumber !== isRequiredIndex) {
     return { error: true };
   }
 

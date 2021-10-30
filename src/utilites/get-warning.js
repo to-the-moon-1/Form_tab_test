@@ -1,9 +1,9 @@
 const getWarning = (header, phone) => {
-  if (header === '') {
+  if (!header) {
     return 'Fill the required field: header';
   }
 
-  if (phone === '') {
+  if (!phone) {
     return 'Fill the required field: phone number';
   }
 
