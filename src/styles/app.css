@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-  margin: 100px auto;
+  margin: 99px auto;
   width: 560px;
 }
 
@@ -41,12 +41,12 @@
 }
 
 .modal-dialog {
-  padding-bottom: 160px;
+  padding-bottom: 151px;
 }
 
 .modal-content {
   margin: -10px -30px;
-  min-width: 570px;
+  min-width: 560px;
   position: relative;
   top: 80px;
 }

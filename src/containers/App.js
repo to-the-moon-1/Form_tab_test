@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { TabContent } from 'reactstrap';
 
 import tabs from '../constants/tabs-for-nav';
+import { initialHeader, initialPhone } from '../constants/initial-state';
 
 import getWarning from '../utilites/get-warning';
-import getSection from '../utilites/get-section';
 import changeTab from '../utilites/change-tab';
 
 import useActiveTab from '../hooks/use-active-tab';
@@ -16,81 +16,80 @@ import useImages from '../hooks/use-images';
 import usePaidService from '../hooks/use-paid-service';
 
 import Navigation from '../components/nav-tabs';
-import Sections from '../components/sections';
+import Sections from './sections';
 
 import '../styles/app.css';
 
-const initialHeader = { value: '', index: 1 };
-const initialPhone = { value: '', index: 2 };
-
 const App = () => {
   const { activeTab, nextTab, prevTab, toggleTab } = useActiveTab();
-  const [header, handleChangeHeader] = useTextReqField(initialHeader);
-  const [phone, handleChangePhone] = useTextReqField(initialPhone);
-  const [description, handleChangeDescription] = useTextField();
-  const [email, handleChangeEmail] = useTextField();
-  const { checked, handleCheck, checkTitle } = useChecked();
-  const { error, handleCheckErrorImg, toggleError } = useError();
-  const [images, handleChangeImg] = useImages();
-  const { checkPaidService, paidService, handlePaidService } = usePaidService();
+  const [header, onChangeHeader] = useTextReqField(initialHeader);
+  const [phone, onChangePhone] = useTextReqField(initialPhone);
+  const [descript, onChangeDescript] = useTextField();
+  const [email, onChangeEmail] = useTextField();
+  const { checked, onCheck, checkTitle } = useChecked();
+  const { error, onCheckErrorImg, toggleError } = useError();
+  const [images, onChangeImg] = useImages();
+  const { checkPaidService, paidService, onPaidService } = usePaidService();
 
   const maxCountOfImages = 5;
 
-  const handleCheckRequiredField = param => {
-    if (!param) toggleError();
-    if (param.length) nextTab();
-    return null;
-  };
+  const onCheckReqField = useCallback(
+    param => {
+      if (!param) toggleError();
+      if (param.length) nextTab();
+      return null;
+    },
+    [nextTab, toggleError],
+  );
 
-  const warning = getWarning(header.value, phone.value);
-
-  const onChangeActiveTab = index => {
-    const { value, error } = changeTab(activeTab, header, phone, index);
-    if (error) toggleError();
-    if (value) toggleTab(value);
-  };
-
-  const informationProps = {
-    checked,
-    checkTitle,
-    handleChangeDescription,
-    handleChangeHeader,
-    handleCheck,
-    handleCheckRequiredField,
+  const warning = useMemo(() => getWarning(header.value, phone.value), [
     header,
-  };
-
-  const contactsProps = {
-    handleChangeEmail,
-    handleChangePhone,
-    handleCheckRequiredField,
     phone,
-    prevTab,
-  };
+  ]);
 
-  const photosProps = {
-    error,
-    handleChangeImg,
-    handleCheckErrorImg,
-    images,
-    maxCountOfImages,
-    toggleError,
-    toggleTab,
-    warning,
-  };
+  const onChangeActiveTab = useCallback(
+    index => {
+      const { value, error } = changeTab(activeTab, header, phone, index);
+      if (error) toggleError();
+      if (value) toggleTab(value);
+    },
+    [activeTab, header, phone, toggleError, toggleTab],
+  );
 
-  const publicationProps = {
-    checkPaidService,
-    checkTitle,
-    description,
-    email,
-    handlePaidService,
-    header,
-    images,
-    paidService,
-    phone,
-    toggleTab,
-  };
+  const checkedProps = useMemo(
+    () => ({ checked, checkTitle, onCheck, onCheckReqField }),
+    [checked, checkTitle, onCheck, onCheckReqField],
+  );
+
+  const informationProps = useMemo(
+    () => ({ ...checkedProps, onChangeDescript, onChangeHeader, header }),
+    [checkedProps, onChangeDescript, onChangeHeader, header],
+  );
+
+  const contactsProps = useMemo(
+    () => ({ onChangeEmail, onChangePhone, onCheckReqField, phone, prevTab }),
+    [onChangeEmail, onChangePhone, onCheckReqField, phone, prevTab],
+  );
+
+  const imagesProps = useMemo(
+    () => ({ onChangeImg, onCheckErrorImg, images, maxCountOfImages }),
+    [onChangeImg, onCheckErrorImg, images, maxCountOfImages],
+  );
+
+  const photosProps = useMemo(
+    () => ({ ...imagesProps, error, toggleError, toggleTab, warning }),
+    [imagesProps, error, toggleError, toggleTab, warning],
+  );
+
+  const outputProps = useMemo(
+    () => ({ checkTitle, descript, email, header, images, paidService, phone }),
+    [checkTitle, descript, email, header, images, paidService, phone],
+  );
+
+  const publicationProps = useMemo(
+    () => ({ ...outputProps, checkPaidService, onPaidService, toggleTab }),
+    [outputProps, checkPaidService, onPaidService, toggleTab],
+  );
 
   return (
     <div className="wrapper">
@@ -102,7 +101,6 @@ const App = () => {
       <TabContent activeTab={activeTab} className="tab-card">
         <Sections
           contactsProps={contactsProps}
-          getSection={getSection}
           informationProps={informationProps}
           photosProps={photosProps}
           publicationProps={publicationProps}

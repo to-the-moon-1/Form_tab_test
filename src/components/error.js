@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, ModalBody } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
+
+import { CloseBtn } from './buttons';
 
 const Error = ({ error, toggleError, warning }) => (
   <Modal className="position-of-error" isOpen={error} toggle={toggleError}>
     <div className="card-pd">
       <ModalBody>
         <span>{warning}</span>
-        <Button className="error-btn" onClick={toggleError}>
-          Okay
-        </Button>
+        <CloseBtn className="error-btn" onClick={toggleError} />
       </ModalBody>
     </div>
   </Modal>

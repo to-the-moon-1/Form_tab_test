@@ -1,23 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
-import { Button } from 'reactstrap';
 
 import Error from './error';
-import { NextBtn, RemoveBtn } from './buttons';
+import { NextBtn, PrevBtn, RemoveBtn } from './buttons';
 
 const Photos = ({
   maxCountOfImages,
-  handleChangeImg,
-  handleCheckErrorImg,
+  onChangeImg,
+  onCheckErrorImg,
   error,
   images,
   toggleTab,
   toggleError,
   warning,
 }) => {
-  const handleClickPrevTab = () => toggleTab(2);
-  const handleClickNextTab = () => toggleTab(4);
+  const onClickPrevTab = () => toggleTab(2);
+  const onClickNextTab = () => toggleTab(4);
 
   return (
     <>
@@ -25,8 +24,8 @@ const Photos = ({
         dataURLKey="dataUrl"
         maxNumber={maxCountOfImages}
         multiple
-        onChange={handleChangeImg}
-        onError={handleCheckErrorImg}
+        onChange={onChangeImg}
+        onError={onCheckErrorImg}
         value={images}
       >
         {({ imageList, onImageUpload, onImageRemove, dragProps }) => (
@@ -64,25 +63,23 @@ const Photos = ({
           </>
         )}
       </ImageUploading>
-      <Button
+      <PrevBtn
         className="half-of-width-btn left-btn label-mg"
-        onClick={handleClickPrevTab}
-      >
-        Prev
-      </Button>{' '}
+        onClick={onClickPrevTab}
+      />
       <NextBtn
         className="half-of-width-btn label-mg"
-        onClick={handleClickNextTab}
-      />{' '}
+        onClick={onClickNextTab}
+      />
     </>
   );
 };
 
 Photos.propTypes = {
   maxCountOfImages: PropTypes.number,
-  handleChangeImg: PropTypes.func,
+  onChangeImg: PropTypes.func,
   error: PropTypes.bool,
-  handleCheckErrorImg: PropTypes.func,
+  onCheckErrorImg: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       dataUrl: PropTypes.string,
@@ -95,9 +92,9 @@ Photos.propTypes = {
 
 Photos.defaultProps = {
   maxCountOfImages: 5,
-  handleChangeImg: () => {},
+  onChangeImg: () => {},
   error: false,
-  handleCheckErrorImg: () => {},
+  onCheckErrorImg: () => {},
   images: [],
   toggleTab: () => {},
   toggleError: () => {},

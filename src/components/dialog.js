@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
-import { SaveBtn } from './buttons';
+import { CloseBtn, SaveBtn } from './buttons';
 
 const Dialog = ({
   checkPaidService,
   checkTitle,
   header,
-  description,
+  descript,
   phone,
   email,
   images,
@@ -30,8 +30,8 @@ const Dialog = ({
           <ModalHeader>Your ad</ModalHeader>
           <ModalBody>
             <div className="save-text-item">Header: {header}</div>
-            {description && (
-              <div className="save-text-item">Description: {description}</div>
+            {descript && (
+              <div className="save-text-item">descript: {descript}</div>
             )}
             <div className="save-text-item">Phone number: {phone}</div>
             {email && <div className="save-text-item">Email: {email}</div>}
@@ -59,9 +59,7 @@ const Dialog = ({
             )}
           </ModalBody>
           <ModalFooter>
-            <Button className="half-of-width-btn btn" onClick={toggle}>
-              Cancel
-            </Button>
+            <CloseBtn className="half-of-width-btn btn" onClick={toggle} />
           </ModalFooter>
         </div>
       </Modal>
@@ -74,7 +72,7 @@ Dialog.propTypes = {
   header: PropTypes.string,
   phone: PropTypes.string,
   email: PropTypes.string,
-  description: PropTypes.string,
+  descript: PropTypes.string,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       dataUrl: PropTypes.string,
@@ -93,7 +91,7 @@ Dialog.defaultProps = {
   header: '',
   phone: '',
   email: '',
-  description: '',
+  descript: '',
   images: [],
   checkPaidService: [],
 };

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TabPane, Form } from 'reactstrap';
+
+import getSection from './get-section';
 
 const Sections = ({
   informationProps,
   contactsProps,
   photosProps,
   publicationProps,
-  getSection,
 }) => {
   const section = [
     {
@@ -34,4 +35,4 @@ const Sections = ({
   ));
 };
 
-export default Sections;
+export default memo(Sections);

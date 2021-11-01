@@ -5,7 +5,7 @@ const useError = (initialError = false) => {
 
   const toggleError = useCallback(() => setError(!error), [error]);
 
-  const handleCheckErrorImg = useCallback(
+  const onCheckErrorImg = useCallback(
     errors => {
       // maxNumber is a const from the library 'react-images-uploading';
       if (!errors.maxNumber) return;
@@ -14,7 +14,7 @@ const useError = (initialError = false) => {
     [toggleError],
   );
 
-  return { error, handleCheckErrorImg, toggleError };
+  return { error, onCheckErrorImg, toggleError };
 };
 
 export default useError;

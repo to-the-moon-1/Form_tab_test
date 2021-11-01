@@ -7,6 +7,12 @@ export const NextBtn = props => (
   </Button>
 );
 
+export const PrevBtn = props => (
+  <Button {...props} color="secondary">
+    Prev
+  </Button>
+);
+
 export const SaveBtn = props => (
   <Button {...props} color="success">
     Save
@@ -16,5 +22,11 @@ export const SaveBtn = props => (
 export const RemoveBtn = props => (
   <Button {...props} color="danger" outline>
     Remove
+  </Button>
+);
+
+export const CloseBtn = props => (
+  <Button {...props} color="secondary">
+    Okay
   </Button>
 );

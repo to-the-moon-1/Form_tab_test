@@ -3,12 +3,12 @@ import { useState, useCallback } from 'react';
 const useTextReqField = initialTextReqField => {
   const [textReqField, setTextReqField] = useState(initialTextReqField);
 
-  const handleChangeTextReqField = useCallback(e => {
+  const onChangeTextReqField = useCallback(e => {
     e.persist();
     setTextReqField(prevState => ({ ...prevState, value: e.target.value }));
   }, []);
 
-  return [textReqField, handleChangeTextReqField];
+  return [textReqField, onChangeTextReqField];
 };
 
 export default useTextReqField;

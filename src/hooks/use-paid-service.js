@@ -1,10 +1,11 @@
 import { useState, useCallback, useMemo } from 'react';
+
 import paidServices from '../constants/paid-services';
 
 const usePaidService = (initialPaidService = paidServices) => {
   const [paidService, setPaidService] = useState(initialPaidService);
 
-  const handlePaidService = useCallback(
+  const onPaidService = useCallback(
     ({ target: { name, checked } }) => {
       const index = paidService.findIndex(({ number }) => number === name);
       const item = paidService[index];
@@ -24,7 +25,7 @@ const usePaidService = (initialPaidService = paidServices) => {
     [paidService],
   );
 
-  return { checkPaidService, paidService, handlePaidService };
+  return { checkPaidService, paidService, onPaidService };
 };
 
 export default usePaidService;

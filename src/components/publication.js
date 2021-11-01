@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Label, Input } from 'reactstrap';
+import { Label, Input } from 'reactstrap';
+
+import { PrevBtn } from './buttons';
 
 import Dialog from './dialog';
 
 const Publication = ({
   checkPaidService,
   checkTitle,
-  description,
+  descript,
   email,
-  handlePaidService,
+  onPaidService,
   header,
   images,
   paidService,
   phone,
   toggleTab,
 }) => {
-  const handleClickPrevTab = () => toggleTab(3);
+  const onClickPrevTab = () => toggleTab(3);
 
   return (
     <>
@@ -28,7 +30,7 @@ const Publication = ({
                 className="checkbox"
                 defaultChecked={checked}
                 name={number}
-                onChange={handlePaidService}
+                onChange={onPaidService}
                 type="checkbox"
               />{' '}
               <span className="label-checkbox no-text-transform">
@@ -38,16 +40,14 @@ const Publication = ({
           </li>
         ))}
       </ul>
-      <Button
+      <PrevBtn
         className="half-of-width-btn service-btn left-btn label-mg"
-        onClick={handleClickPrevTab}
-      >
-        Prev
-      </Button>{' '}
+        onClick={onClickPrevTab}
+      />
       <Dialog
         checkPaidService={checkPaidService}
         checkTitle={checkTitle}
-        description={description}
+        descript={descript}
         email={email}
         header={header.value}
         images={images}
@@ -59,7 +59,7 @@ const Publication = ({
 
 Publication.propTypes = {
   checkTitle: PropTypes.string,
-  description: PropTypes.string,
+  descript: PropTypes.string,
   email: PropTypes.string,
   header: PropTypes.shape({
     value: PropTypes.string,
@@ -69,7 +69,7 @@ Publication.propTypes = {
     value: PropTypes.string,
     index: PropTypes.number,
   }),
-  handlePaidService: PropTypes.func,
+  onPaidService: PropTypes.func,
   toggleTab: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
@@ -92,11 +92,11 @@ Publication.propTypes = {
 
 Publication.defaultProps = {
   checkTitle: 'OFF',
-  description: '',
+  descript: '',
   email: '',
   header: { value: '', index: 1 },
   phone: { value: '', index: 2 },
-  handlePaidService: () => {},
+  onPaidService: () => {},
   toggleTab: () => {},
   images: [],
   paidService: [],

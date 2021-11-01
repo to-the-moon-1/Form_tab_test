@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 const useImages = (initialImages = []) => {
   const [images, setImages] = useState(initialImages);
 
-  const handleChangeImg = useCallback(
+  const onChangeImg = useCallback(
     imageList =>
       setImages(
         imageList.map(({ dataUrl, file }, key) => {
@@ -13,7 +13,7 @@ const useImages = (initialImages = []) => {
     [],
   );
 
-  return [images, handleChangeImg];
+  return [images, onChangeImg];
 };
 
 export default useImages;

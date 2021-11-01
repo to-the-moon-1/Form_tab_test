@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Label, Input } from 'reactstrap';
 
-import { NextBtn } from './buttons';
+import { NextBtn, PrevBtn } from './buttons';
 
 const Contacts = ({
-  handleChangeEmail,
-  handleChangePhone,
-  handleCheckRequiredField,
+  onChangeEmail,
+  onChangePhone,
+  onCheckReqField,
   phone: { value },
   prevTab,
 }) => {
-  const handleClickNextTab = () => handleCheckRequiredField(value);
+  const onClickNextTab = () => onCheckReqField(value);
 
   return (
     <>
@@ -22,7 +22,7 @@ const Contacts = ({
         <Input
           id="example-phone"
           name="phone"
-          onChange={handleChangePhone}
+          onChange={onChangePhone}
           placeholder="Your phone number"
           required
           type="text"
@@ -36,18 +36,19 @@ const Contacts = ({
         <Input
           id="example-email"
           name="email"
-          onChange={handleChangeEmail}
+          onChange={onChangeEmail}
           placeholder="Your email"
           type="text"
         />
       </FormGroup>
-      <Button className="half-of-width-btn left-btn label-mg" onClick={prevTab}>
-        Prev
-      </Button>{' '}
+      <PrevBtn
+        className="half-of-width-btn left-btn label-mg"
+        onClick={prevTab}
+      />
       <NextBtn
         className="half-of-width-btn label-mg"
-        onClick={handleClickNextTab}
-      />{' '}
+        onClick={onClickNextTab}
+      />
     </>
   );
 };
@@ -58,17 +59,17 @@ Contacts.propTypes = {
     index: PropTypes.number,
   }),
   prevTab: PropTypes.func,
-  handleCheckRequiredField: PropTypes.func,
-  handleChangeEmail: PropTypes.func,
-  handleChangePhone: PropTypes.func,
+  onCheckReqField: PropTypes.func,
+  onChangeEmail: PropTypes.func,
+  onChangePhone: PropTypes.func,
 };
 
 Contacts.defaultProps = {
   phone: { value: '', index: 2 },
   prevTab: () => {},
-  handleCheckRequiredField: () => {},
-  handleChangeEmail: () => {},
-  handleChangePhone: () => {},
+  onCheckReqField: () => {},
+  onChangeEmail: () => {},
+  onChangePhone: () => {},
 };
 
 export default Contacts;

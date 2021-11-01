@@ -8,13 +8,13 @@ import { NextBtn } from './buttons';
 const Information = ({
   checked,
   checkTitle,
-  handleChangeDescription,
-  handleChangeHeader,
-  handleCheck,
-  handleCheckRequiredField,
+  onChangeDescript,
+  onChangeHeader,
+  onCheck,
+  onCheckReqField,
   header: { value },
 }) => {
-  const handleClickNextTab = () => handleCheckRequiredField(value);
+  const onClickNextTab = () => onCheckReqField(value);
 
   return (
     <>
@@ -25,7 +25,7 @@ const Information = ({
         <Input
           id="example-header"
           name="header"
-          onChange={handleChangeHeader}
+          onChange={onChangeHeader}
           placeholder="Your header"
           required
           type="text"
@@ -39,7 +39,7 @@ const Information = ({
         <Input
           id="example-text"
           name="text"
-          onChange={handleChangeDescription}
+          onChange={onChangeDescript}
           placeholder="Your description"
           type="textarea"
         />
@@ -47,12 +47,12 @@ const Information = ({
       <Checkbox
         checked={checked}
         checkTitle={checkTitle}
-        setChecked={handleCheck}
+        setChecked={onCheck}
       />
       <NextBtn
         className="full-of-width-btn label-mg"
-        onClick={handleClickNextTab}
-      />{' '}
+        onClick={onClickNextTab}
+      />
     </>
   );
 };
@@ -64,20 +64,20 @@ Information.propTypes = {
     value: PropTypes.string,
     index: PropTypes.number,
   }),
-  handleChangeDescription: PropTypes.func,
-  handleChangeHeader: PropTypes.func,
-  handleCheck: PropTypes.func,
-  handleCheckRequiredField: PropTypes.func,
+  onChangeDescript: PropTypes.func,
+  onChangeHeader: PropTypes.func,
+  onCheck: PropTypes.func,
+  onCheckReqField: PropTypes.func,
 };
 
 Information.defaultProps = {
   checked: false,
   checkTitle: 'OFF',
   header: { value: '', index: 1 },
-  handleChangeDescription: () => {},
-  handleChangeHeader: () => {},
-  handleCheck: () => {},
-  handleCheckRequiredField: () => {},
+  onChangeDescript: () => {},
+  onChangeHeader: () => {},
+  onCheck: () => {},
+  onCheckReqField: () => {},
 };
 
 export default Information;
