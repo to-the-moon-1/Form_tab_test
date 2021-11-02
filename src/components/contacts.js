@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-import { NextBtn, PrevBtn } from './buttons';
+import { PrimaryBtn, SecondaryBtn } from './buttons';
 
 const Contacts = ({
   onChangeEmail,
@@ -41,14 +41,18 @@ const Contacts = ({
           type="text"
         />
       </FormGroup>
-      <PrevBtn
+      <SecondaryBtn
         className="half-of-width-btn left-btn label-mg"
         onClick={prevTab}
-      />
-      <NextBtn
+      >
+        Prev
+      </SecondaryBtn>
+      <PrimaryBtn
         className="half-of-width-btn label-mg"
         onClick={onClickNextTab}
-      />
+      >
+        Next
+      </PrimaryBtn>
     </>
   );
 };

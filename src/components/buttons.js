@@ -1,32 +1,10 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 
-export const NextBtn = props => (
-  <Button {...props} color="primary">
-    Next
-  </Button>
-);
+export const PrimaryBtn = props => <Button {...props} color="primary" />;
 
-export const PrevBtn = props => (
-  <Button {...props} color="secondary">
-    Prev
-  </Button>
-);
+export const SecondaryBtn = props => <Button {...props} color="secondary" />;
 
-export const SaveBtn = props => (
-  <Button {...props} color="success">
-    Save
-  </Button>
-);
+export const SuccessBtn = props => <Button {...props} color="success" />;
 
-export const RemoveBtn = props => (
-  <Button {...props} color="danger" outline>
-    Remove
-  </Button>
-);
-
-export const CloseBtn = props => (
-  <Button {...props} color="secondary">
-    Okay
-  </Button>
-);
+export const DangerBtn = props => <Button {...props} color="danger" outline />;

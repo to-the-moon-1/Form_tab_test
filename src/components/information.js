@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormGroup, Label, Input } from 'reactstrap';
 
 import Checkbox from './checkbox';
-import { NextBtn } from './buttons';
+import { PrimaryBtn } from './buttons';
 
 const Information = ({
   checked,
@@ -49,10 +49,12 @@ const Information = ({
         checkTitle={checkTitle}
         setChecked={onCheck}
       />
-      <NextBtn
+      <PrimaryBtn
         className="full-of-width-btn label-mg"
         onClick={onClickNextTab}
-      />
+      >
+        Next
+      </PrimaryBtn>
     </>
   );
 };

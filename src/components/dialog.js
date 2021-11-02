@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
-import { CloseBtn, SaveBtn } from './buttons';
+import { SecondaryBtn, SuccessBtn } from './buttons';
 
 const Dialog = ({
   checkPaidService,
@@ -21,10 +21,12 @@ const Dialog = ({
 
   return (
     <>
-      <SaveBtn
+      <SuccessBtn
         className="half-of-width-btn service-btn label-mg"
         onClick={toggle}
-      />
+      >
+        Save
+      </SuccessBtn>
       <Modal isOpen={modal} toggle={toggle}>
         <div className="card-pd">
           <ModalHeader>Your ad</ModalHeader>
@@ -59,7 +61,9 @@ const Dialog = ({
             )}
           </ModalBody>
           <ModalFooter>
-            <CloseBtn className="half-of-width-btn btn" onClick={toggle} />
+            <SecondaryBtn className="half-of-width-btn btn" onClick={toggle}>
+              Okay
+            </SecondaryBtn>
           </ModalFooter>
         </div>
       </Modal>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
 
 import Error from './error';
-import { NextBtn, PrevBtn, RemoveBtn } from './buttons';
+import { PrimaryBtn, SecondaryBtn, DangerBtn } from './buttons';
 
 const Photos = ({
   maxCountOfImages,
@@ -50,10 +50,12 @@ const Photos = ({
                         src={dataUrl}
                       />
                       <div>
-                        <RemoveBtn
+                        <DangerBtn
                           className="one-third-of-width-btn"
                           onClick={handleImageRemove}
-                        />
+                        >
+                          Remove
+                        </DangerBtn>
                       </div>
                     </li>
                   );
@@ -63,14 +65,18 @@ const Photos = ({
           </>
         )}
       </ImageUploading>
-      <PrevBtn
+      <SecondaryBtn
         className="half-of-width-btn left-btn label-mg"
         onClick={onClickPrevTab}
-      />
-      <NextBtn
+      >
+        Prev
+      </SecondaryBtn>
+      <PrimaryBtn
         className="half-of-width-btn label-mg"
         onClick={onClickNextTab}
-      />
+      >
+        Next
+      </PrimaryBtn>
     </>
   );
 };

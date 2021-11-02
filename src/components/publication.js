@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Label, Input } from 'reactstrap';
 
-import { PrevBtn } from './buttons';
+import { SecondaryBtn } from './buttons';
 
 import Dialog from './dialog';
 
@@ -40,10 +40,12 @@ const Publication = ({
           </li>
         ))}
       </ul>
-      <PrevBtn
+      <SecondaryBtn
         className="half-of-width-btn service-btn left-btn label-mg"
         onClick={onClickPrevTab}
-      />
+      >
+        Prev
+      </SecondaryBtn>
       <Dialog
         checkPaidService={checkPaidService}
         checkTitle={checkTitle}

@@ -9,7 +9,7 @@ const Sections = ({
   photosProps,
   publicationProps,
 }) => {
-  const section = [
+  const tabs = [
     {
       name: 'Information',
       props: informationProps,
@@ -28,7 +28,7 @@ const Sections = ({
     },
   ];
 
-  return section.map(({ name, props }, index) => (
+  return tabs.map(({ name, props }, index) => (
     <TabPane key={`${name}_show`} tabId={index + 1}>
       <Form>{getSection(name, props)}</Form>
     </TabPane>
