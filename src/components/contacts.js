@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label, Input } from 'reactstrap';
 
+import { initialPhone } from '../constants/initial-state';
+
 import { PrimaryBtn, SecondaryBtn } from './buttons';
 
 const Contacts = ({
@@ -69,7 +71,7 @@ Contacts.propTypes = {
 };
 
 Contacts.defaultProps = {
-  phone: { value: '', index: 2 },
+  phone: initialPhone,
   prevTab: () => {},
   onCheckReqField: () => {},
   onChangeEmail: () => {},

@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-import Checkbox from './checkbox';
+import { initialHeader } from '../constants/initial-state';
+
 import { PrimaryBtn } from './buttons';
+import Checkbox from './checkbox';
 
 const Information = ({
   checked,
@@ -75,7 +77,7 @@ Information.propTypes = {
 Information.defaultProps = {
   checked: false,
   checkTitle: 'OFF',
-  header: { value: '', index: 1 },
+  header: initialHeader,
   onChangeDescript: () => {},
   onChangeHeader: () => {},
   onCheck: () => {},

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Label, Input } from 'reactstrap';
 
-import { SecondaryBtn } from './buttons';
+import { initialHeader, initialPhone } from '../constants/initial-state';
 
+import { SecondaryBtn } from './buttons';
 import Dialog from './dialog';
 
 const Publication = ({
@@ -96,8 +97,8 @@ Publication.defaultProps = {
   checkTitle: 'OFF',
   descript: '',
   email: '',
-  header: { value: '', index: 1 },
-  phone: { value: '', index: 2 },
+  header: initialHeader,
+  phone: initialPhone,
   onPaidService: () => {},
   toggleTab: () => {},
   images: [],

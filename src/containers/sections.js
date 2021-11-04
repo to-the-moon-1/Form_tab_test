@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { TabPane, Form } from 'reactstrap';
 
-import getSection from './get-section';
+import componentForSection from './component-for-section';
 
 const Sections = ({
   informationProps,
@@ -30,7 +30,7 @@ const Sections = ({
 
   return tabs.map(({ name, props }, index) => (
     <TabPane key={`${name}_show`} tabId={index + 1}>
-      <Form>{getSection(name, props)}</Form>
+      <Form>{componentForSection(name, props)}</Form>
     </TabPane>
   ));
 };

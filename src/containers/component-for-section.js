@@ -5,7 +5,7 @@ import Contacts from '../components/contacts';
 import Photos from '../components/photos';
 import Publication from '../components/publication';
 
-const getSection = (key, props) => {
+const componentForSection = (key, props) => {
   switch (key) {
     case 'Information':
       return <Information {...props} />;
@@ -20,4 +20,4 @@ const getSection = (key, props) => {
   }
 };
 
-export default getSection;
+export default componentForSection;

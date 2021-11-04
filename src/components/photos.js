@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
 
-import Error from './error';
 import { PrimaryBtn, SecondaryBtn, DangerBtn } from './buttons';
+import Error from './error';
 
 const Photos = ({
   maxCountOfImages,
