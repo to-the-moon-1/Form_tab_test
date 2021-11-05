@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
 
+// import { dataURL } from '../constants/initial-state';
+
 import { PrimaryBtn, SecondaryBtn, DangerBtn } from './buttons';
 import Error from './error';
 
@@ -18,10 +20,13 @@ const Photos = ({
   const onClickPrevTab = () => toggleTab(2);
   const onClickNextTab = () => toggleTab(4);
 
+  // eslint-disable-next-line no-console
+  console.log(images);
+
   return (
     <>
       <ImageUploading
-        dataURLKey="dataUrl"
+        dataURLKey="dataURL"
         maxNumber={maxCountOfImages}
         multiple
         onChange={onChangeImg}
@@ -40,14 +45,14 @@ const Photos = ({
             <Error error={error} toggleError={toggleError} warning={warning} />
             {imageList.length > 0 && (
               <ul className="clear-list-style">
-                {imageList.map(({ dataUrl, key }) => {
+                {imageList.map(({ dataURL, key }) => {
                   const handleImageRemove = () => onImageRemove(key);
                   return (
-                    <li key={`${dataUrl}_${key}_load`} className="image-item">
+                    <li key={`${dataURL}_${key}_load`} className="image-item">
                       <img
                         alt="Your img"
                         className="image-size"
-                        src={dataUrl}
+                        src={dataURL}
                       />
                       <div>
                         <DangerBtn
@@ -88,7 +93,7 @@ Photos.propTypes = {
   onCheckErrorImg: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      dataUrl: PropTypes.string,
+      dataURL: PropTypes.string,
     }),
   ),
   toggleTab: PropTypes.func,
