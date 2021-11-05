@@ -20,9 +20,6 @@ const Photos = ({
   const onClickPrevTab = () => toggleTab(2);
   const onClickNextTab = () => toggleTab(4);
 
-  // eslint-disable-next-line no-console
-  console.log(images);
-
   return (
     <>
       <ImageUploading
