@@ -40,9 +40,9 @@ const Dialog = ({
             <div className="save-text-item">Checkbox: {checkTitle}</div>
             {images.length > 0 && (
               <ul className="image-items clear-list-style">
-                {images.map(({ dataUrl }) => (
-                  <li key={`${dataUrl}_save`} className="save-image-item">
-                    <img alt="Your img" className="image-size" src={dataUrl} />
+                {images.map(({ dataURL }) => (
+                  <li key={`${dataURL}_save`} className="save-image-item">
+                    <img alt="Your img" className="image-size" src={dataURL} />
                   </li>
                 ))}
               </ul>

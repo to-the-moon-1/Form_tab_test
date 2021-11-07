@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
 
-// import { dataURL } from '../constants/initial-state';
-
-import { PrimaryBtn, SecondaryBtn, DangerBtn } from './buttons';
+import { DangerBtn } from './buttons';
+import PrevNextBtn from './prev-next-btn';
 import Error from './error';
 
 const Photos = ({
@@ -67,18 +66,7 @@ const Photos = ({
           </>
         )}
       </ImageUploading>
-      <SecondaryBtn
-        className="half-of-width-btn left-btn label-mg"
-        onClick={onClickPrevTab}
-      >
-        Prev
-      </SecondaryBtn>
-      <PrimaryBtn
-        className="half-of-width-btn label-mg"
-        onClick={onClickNextTab}
-      >
-        Next
-      </PrimaryBtn>
+      <PrevNextBtn funkNext={onClickNextTab} funkPrev={onClickPrevTab} />
     </>
   );
 };
