@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { PrimaryBtn, SecondaryBtn } from './buttons';
 
-const PrevNextBtn = ({ funkNext, funkPrev }) => (
+const NavBtn = ({ funkNext, funkPrev }) => (
   <>
     <SecondaryBtn
       className="half-of-width-btn left-btn label-mg"
@@ -17,14 +17,14 @@ const PrevNextBtn = ({ funkNext, funkPrev }) => (
   </>
 );
 
-PrevNextBtn.propTypes = {
+NavBtn.propTypes = {
   funkNext: PropTypes.func,
   funkPrev: PropTypes.func,
 };
 
-PrevNextBtn.defaultProps = {
+NavBtn.defaultProps = {
   funkNext: () => {},
   funkPrev: () => {},
 };
 
-export default PrevNextBtn;
+export default NavBtn;

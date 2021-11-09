@@ -4,7 +4,7 @@ import { FormGroup, Label, Input } from 'reactstrap';
 
 import { initialPhone } from '../constants/initial-state';
 
-import PrevNextBtn from './prev-next-btn';
+import NavBtn from './nav-btn';
 
 const Contacts = ({
   onChangeEmail,
@@ -43,7 +43,7 @@ const Contacts = ({
           type="text"
         />
       </FormGroup>
-      <PrevNextBtn funkNext={onClickNextTab} funkPrev={prevTab} />
+      <NavBtn funkNext={onClickNextTab} funkPrev={prevTab} />
     </>
   );
 };

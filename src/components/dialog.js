@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
+import { dataURL } from '../constants/initial-state';
+
 import { SecondaryBtn, SuccessBtn } from './buttons';
 
 const Dialog = ({
@@ -40,9 +42,13 @@ const Dialog = ({
             <div className="save-text-item">Checkbox: {checkTitle}</div>
             {images.length > 0 && (
               <ul className="image-items clear-list-style">
-                {images.map(({ dataURL }) => (
-                  <li key={`${dataURL}_save`} className="save-image-item">
-                    <img alt="Your img" className="image-size" src={dataURL} />
+                {images.map(({ key, ...propsImage }) => (
+                  <li key={`${key}_save`} className="save-image-item">
+                    <img
+                      alt="Your img"
+                      className="image-size"
+                      src={propsImage[dataURL]}
+                    />
                   </li>
                 ))}
               </ul>

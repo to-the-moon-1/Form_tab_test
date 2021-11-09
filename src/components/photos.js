@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
 
+import { dataURL } from '../constants/initial-state';
+
 import { DangerBtn } from './buttons';
-import PrevNextBtn from './prev-next-btn';
+import NavBtn from './nav-btn';
 import Error from './error';
 
 const Photos = ({
@@ -22,7 +24,7 @@ const Photos = ({
   return (
     <>
       <ImageUploading
-        dataURLKey="dataURL"
+        dataURLKey={dataURL}
         maxNumber={maxCountOfImages}
         multiple
         onChange={onChangeImg}
@@ -41,14 +43,14 @@ const Photos = ({
             <Error error={error} toggleError={toggleError} warning={warning} />
             {imageList.length > 0 && (
               <ul className="clear-list-style">
-                {imageList.map(({ dataURL, key }) => {
+                {imageList.map(({ key, ...propsImage }) => {
                   const handleImageRemove = () => onImageRemove(key);
                   return (
-                    <li key={`${dataURL}_${key}_load`} className="image-item">
+                    <li key={`${key}_down`} className="image-item">
                       <img
                         alt="Your img"
                         className="image-size"
-                        src={dataURL}
+                        src={propsImage[dataURL]}
                       />
                       <div>
                         <DangerBtn
@@ -66,7 +68,7 @@ const Photos = ({
           </>
         )}
       </ImageUploading>
-      <PrevNextBtn funkNext={onClickNextTab} funkPrev={onClickPrevTab} />
+      <NavBtn funkNext={onClickNextTab} funkPrev={onClickPrevTab} />
     </>
   );
 };

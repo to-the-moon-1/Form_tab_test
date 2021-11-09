@@ -8,12 +8,12 @@ const usePaidService = (initialPaidService = paidServices) => {
   const onPaidService = useCallback(
     ({ target: { name, checked } }) => {
       const index = paidService.findIndex(({ number }) => number === name);
-      const item = paidService[index];
+      const itemService = paidService[index];
 
       setPaidService(prevPaidService =>
         Object.values({
           ...prevPaidService,
-          [index]: { ...item, checked },
+          [index]: { ...itemService, checked },
         }),
       );
     },

@@ -6,8 +6,8 @@ const useImages = (initialImages = []) => {
   const onChangeImg = useCallback(
     imageList =>
       setImages(
-        imageList.map(({ dataURL, file }, key) => {
-          return { dataURL, file, key };
+        imageList.map((propsImage, key) => {
+          return { ...propsImage, key };
         }),
       ),
     [],
