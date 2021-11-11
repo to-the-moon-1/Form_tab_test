@@ -43,7 +43,7 @@ const Contacts = ({
           type="text"
         />
       </FormGroup>
-      <NavBtn funkNext={onClickNextTab} funkPrev={prevTab} />
+      <NavBtn onNext={onClickNextTab} onPrev={prevTab} />
     </>
   );
 };

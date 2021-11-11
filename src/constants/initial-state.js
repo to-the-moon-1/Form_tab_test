@@ -1,4 +1,4 @@
 export const initialHeader = { value: '', index: 1 };
 export const initialPhone = { value: '', index: 2 };
 
-export const dataURL = 'dataURL';
+export const initialImgKey = 'dataURL';

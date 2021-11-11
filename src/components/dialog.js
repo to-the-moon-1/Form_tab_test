@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
-import { dataURL } from '../constants/initial-state';
+import { initialImgKey } from '../constants/initial-state';
 
 import { SecondaryBtn, SuccessBtn } from './buttons';
 
@@ -47,7 +47,7 @@ const Dialog = ({
                     <img
                       alt="Your img"
                       className="image-size"
-                      src={propsImage[dataURL]}
+                      src={propsImage[initialImgKey]}
                     />
                   </li>
                 ))}
@@ -85,7 +85,7 @@ Dialog.propTypes = {
   descript: PropTypes.string,
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      dataUrl: PropTypes.string,
+      initialImgKey: PropTypes.string,
     }),
   ),
   checkPaidService: PropTypes.arrayOf(

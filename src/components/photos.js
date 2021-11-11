@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageUploading from 'react-images-uploading';
 
-import { dataURL } from '../constants/initial-state';
+import { initialImgKey } from '../constants/initial-state';
 
 import { DangerBtn } from './buttons';
 import NavBtn from './nav-btn';
@@ -24,7 +24,7 @@ const Photos = ({
   return (
     <>
       <ImageUploading
-        dataURLKey={dataURL}
+        dataURLKey={initialImgKey}
         maxNumber={maxCountOfImages}
         multiple
         onChange={onChangeImg}
@@ -50,7 +50,7 @@ const Photos = ({
                       <img
                         alt="Your img"
                         className="image-size"
-                        src={propsImage[dataURL]}
+                        src={propsImage[initialImgKey]}
                       />
                       <div>
                         <DangerBtn
@@ -68,7 +68,7 @@ const Photos = ({
           </>
         )}
       </ImageUploading>
-      <NavBtn funkNext={onClickNextTab} funkPrev={onClickPrevTab} />
+      <NavBtn onNext={onClickNextTab} onPrev={onClickPrevTab} />
     </>
   );
 };
@@ -80,7 +80,7 @@ Photos.propTypes = {
   onCheckErrorImg: PropTypes.func,
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      dataURL: PropTypes.string,
+      initialImgKey: PropTypes.string,
     }),
   ),
   toggleTab: PropTypes.func,
