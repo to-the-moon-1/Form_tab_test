@@ -33,8 +33,6 @@ const App = () => {
   const { checkPaidService, paidService, onPaidService } = usePaidService();
   const { width } = useWindowWidth();
 
-  console.log(width); // eslint-disable-line no-console
-
   const maxCountOfImages = 5;
 
   const onCheckReqField = useCallback(
