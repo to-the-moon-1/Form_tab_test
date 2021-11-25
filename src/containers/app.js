@@ -14,6 +14,7 @@ import useChecked from '../hooks/use-checked';
 import useError from '../hooks/use-error';
 import useImages from '../hooks/use-images';
 import usePaidService from '../hooks/use-paid-service';
+import useWindowWidth from '../hooks/use-window-width';
 
 import Navigation from '../components/nav-tabs';
 import Sections from './sections';
@@ -30,6 +31,9 @@ const App = () => {
   const { error, onCheckErrorImg, toggleError } = useError();
   const [images, onChangeImg] = useImages();
   const { checkPaidService, paidService, onPaidService } = usePaidService();
+  const { width } = useWindowWidth();
+
+  console.log(width); // eslint-disable-line no-console
 
   const maxCountOfImages = 5;
 
@@ -97,6 +101,7 @@ const App = () => {
         activeTab={activeTab}
         onChangeActiveTab={onChangeActiveTab}
         tabs={tabs}
+        width={width}
       />
       <TabContent activeTab={activeTab} className="tab-card">
         <Sections
