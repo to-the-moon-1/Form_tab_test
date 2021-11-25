@@ -36,7 +36,7 @@ const Contacts = ({
           Email
         </Label>
         <Input
-          className="bottom-mg"
+          className="btn-mg"
           id="example-email"
           name="email"
           onChange={onChangeEmail}

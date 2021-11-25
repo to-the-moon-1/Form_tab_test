@@ -22,6 +22,10 @@
   word-wrap: break-word;
 }
 
+.tab-img {
+  display: none;
+}
+
 .tab-name {
   text-align: center;
   width: 140px;
@@ -56,9 +60,19 @@
   margin-top: 10px;
 }
 
+.warning-text {
+  margin-right: 30px;
+}
+
 .position-of-error {
   position: relative;
   top: 150px;
+}
+
+.display-flex.modal-body {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .label {
@@ -112,7 +126,6 @@
 }
 
 .error-btn {
-  float: right;
   margin-top: -5px;
   width: 30%;
 }
@@ -135,10 +148,8 @@
 }
 
 .image-size {
-  height: max-content;
   object-fit: contain;
   padding-left: 22%;
-  width: max-content;
 }
 
 .image-item,
@@ -153,8 +164,8 @@
   margin-bottom: 15px;
 }
 
-.image-item:last-child,
-.save-image-item:last-child {
+.image-item:nth-child(4),
+.save-image-item:nth-child(4) {
   margin-right: 0;
 }
 
@@ -179,11 +190,15 @@
     top: 2px;
   }
 
+  .display-flex.modal-body {
+    display: block;
+  }
+
   .service-mg {
     margin-bottom: 10px;
   }
 
-  .bottom-mg {
+  .btn-mg {
     margin-bottom: 12px;
   }
 
@@ -215,23 +230,23 @@
     width: 25%;
   }
 
+  .tab-text {
+    display: none;
+  }
+
   .tab-img {
+    display: block;
+    margin: auto;
     width: 30px;
   }
 
   .modal-content {
-    margin: 1.75rem auto;
+    margin: 28px auto;
     max-width: 500px;
     min-width: unset;
   }
 
-  .warning-text {
-    margin-right: 30px;
-    width: 140px;
-  }
-
   .error-btn {
-    float: unset;
     margin-top: 10px;
     width: 100%;
   }

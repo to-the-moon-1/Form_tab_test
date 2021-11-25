@@ -7,7 +7,7 @@ import { SecondaryBtn } from './buttons';
 const Error = ({ error, toggleError, warning }) => (
   <Modal className="position-of-error" isOpen={error} toggle={toggleError}>
     <div className="card-pd">
-      <ModalBody>
+      <ModalBody className="display-flex">
         <span className="warning-text">{warning}</span>
         <SecondaryBtn className="error-btn" onClick={toggleError}>
           Okay

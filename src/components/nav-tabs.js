@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
-const Navigation = ({ activeTab, onChangeActiveTab, tabs, width }) => (
+const Navigation = ({ activeTab, onChangeActiveTab, tabs }) => (
   <Nav tabs>
-    {tabs.map(({ index, name, src }) => {
+    {tabs.map(({ index, name, path }) => {
       const activeClass = cn({ active: activeTab === index + 1 });
       const onActibeTab = () => onChangeActiveTab(index);
       return (
         <NavItem key={`${name}_tab`} className="tab-name">
           <NavLink className={activeClass} onClick={onActibeTab}>
-            {width < 640 ? (
-              <img alt={name} className="tab-img" src={src} />
-            ) : (
-              name
-            )}
+            <img alt={name} className="tab-img" src={path} />
+            <span className="tab-text">{name}</span>
           </NavLink>
         </NavItem>
       );
@@ -32,14 +29,12 @@ Navigation.propTypes = {
       name: PropTypes.string,
     }),
   ),
-  width: PropTypes.number,
 };
 
 Navigation.defaultProps = {
   activeTab: 1,
   onChangeActiveTab: () => {},
   tabs: [],
-  width: 0,
 };
 
 export default memo(Navigation);
