@@ -54,7 +54,7 @@ const Photos = ({
                       />
                       <div>
                         <DangerBtn
-                          className="one-third-of-width-btn"
+                          className="one-third-width-btn"
                           onClick={handleImageRemove}
                         >
                           Remove

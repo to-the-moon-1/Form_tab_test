@@ -11,7 +11,7 @@
 .tab-card {
   background-clip: border-box;
   background-color: #fff;
-  border: 1px solid #0000001f;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 0 0 5px 5px;
   border-top: none;
   display: flex;
@@ -64,7 +64,7 @@
   margin-right: 30px;
 }
 
-.position-of-error {
+.position-error-dialog {
   position: relative;
   top: 150px;
 }
@@ -108,15 +108,15 @@
   margin-top: 5px;
 }
 
-.full-of-width-btn {
+.full-width-btn {
   width: 100%;
 }
 
-.half-of-width-btn {
+.half-width-btn {
   width: 48.78%;
 }
 
-.one-third-of-width-btn {
+.one-third-width-btn {
   margin-top: 10px;
   width: 100%;
 }
@@ -202,7 +202,7 @@
     margin-bottom: 12px;
   }
 
-  .position-of-error {
+  .position-error-dialog {
     top: 100px;
   }
 
@@ -255,7 +255,7 @@
     margin-right: 0;
   }
 
-  .half-of-width-btn {
+  .half-width-btn {
     margin-top: 10px;
     width: 100%;
   }

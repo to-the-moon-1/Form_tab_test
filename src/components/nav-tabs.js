@@ -5,13 +5,13 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 
 const Navigation = ({ activeTab, onChangeActiveTab, tabs }) => (
   <Nav tabs>
-    {tabs.map(({ index, name, path }) => {
+    {tabs.map(({ index, name, icon }) => {
       const activeClass = cn({ active: activeTab === index + 1 });
       const onActibeTab = () => onChangeActiveTab(index);
       return (
         <NavItem key={`${name}_tab`} className="tab-name">
           <NavLink className={activeClass} onClick={onActibeTab}>
-            <img alt={name} className="tab-img" src={path} />
+            <img alt={name} className="tab-img" src={icon} />
             <span className="tab-text">{name}</span>
           </NavLink>
         </NavItem>
