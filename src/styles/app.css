@@ -64,12 +64,12 @@
   margin-right: 30px;
 }
 
-.position-error-dialog {
+.error-dialog {
   position: relative;
   top: 150px;
 }
 
-.display-flex.modal-body {
+.modal-body.display-flex {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -202,7 +202,7 @@
     margin-bottom: 12px;
   }
 
-  .position-error-dialog {
+  .error-dialog {
     top: 100px;
   }
 
